@@ -8,3 +8,7 @@
 .link:hover{
     background-color: #F6F6F6;
 }
+
+.limit-width{
+    max-width: 800px;
+}
