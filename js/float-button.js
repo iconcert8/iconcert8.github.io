@@ -14,7 +14,7 @@ class FloatButton extends HTMLElement {
             width: 50px; 
             height: 50px;
             position: absolute;
-            left: 20px;
+            left: 4px;
             top: 20px;
             white-space: nowrap;">
             <div style="
