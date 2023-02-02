@@ -6,7 +6,15 @@ class FloatButton extends HTMLElement {
     connectedCallback() {
       let href = this.getAttribute('href');
       this.innerHTML = `
-      <a href="${href}" 
+      <style>
+        #float-button-icon{
+          color: cornflowerblue;
+        }
+        #float-button:hover #float-button-icon{
+          color: darkslateblue;
+        }
+      </style>
+      <a id="float-button" href="${href}" 
         style="
             display: block;
             text-decoration: none;
@@ -22,7 +30,7 @@ class FloatButton extends HTMLElement {
             height: 100%;
             vertical-align: middle;">
             </div>
-            <i style="font-size: 30px; color: cornflowerblue;" class="align-middle bi bi-arrow-left-short"></i>
+            <i id="float-button-icon" style="font-size: 30px;" class="align-middle bi bi-arrow-left-short"></i>
         </a>
       `;
     }
