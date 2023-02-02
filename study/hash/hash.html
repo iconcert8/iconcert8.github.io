@@ -15,6 +15,27 @@
     <p class="text-center" style="font-size: small;">iconcert8's log</p>
     <div class="m-4 d-flex justify-content-center">
         <div class="d-inline-block limit-width">
+            Hash란 <strong>임의의 데이터를 일정 길이의 데이터로 변환 시키는 것을 말한다.</strong>
+            <br><br>
+            일정한 길이의 정수값으로 변환하여 array[]의 <strong>인덱스 값</strong>으로 사용이 가능하다.
+            <br>
+            이는 <strong>Key기반의 Hash 자료구조로 구현</strong>이 가능하다. Key를 Hash로 변환하고 array[]의 인덱스로 접근할 수 있다.
+            <br> 
+            <strong>Key 탐색시 O(1)의 시간복잡도를 가지게 된다.</strong>
+            <br><br>
+            <strong>그러나 문제가 있다.</strong>
+            <br><br>
+            Key가 달라도 동일한 Hash가 반환되는 경우가 있다. 이를 <strong>Hash충돌</strong>이라고 한다.
+            <br>
+            몇가지 해결 방법이 존재한다.
+            <br><br>
+            <strong>1) 체이닝</strong>
+            <br>
+            충돌시 기존 데이터에 연결(LinkedList)하여 저장한다. 탐색시 LinkedList에서 탐색하게 되어 linear한 성능저하가 생긴다.
+            <br><br>
+            <strong>2) 개방 주소법</strong>
+            <br>
+            충돌시 해시 값을 (선형/제곱/이중해시)만큼 건너뛰고 저장한다. 저장할 데이터가 적을 때 유리하다.
         </div>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
