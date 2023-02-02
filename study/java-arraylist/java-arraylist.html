@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/float-button.js" type="text/javascript" defer></script>
+    <title>Java ArrayList의 원리</title>
+  </head>
+  <body>
+    <float-button href="/study/study.html"></float-button>
+    <div class=" ms-5 me-4 mt-4 text-center"><h1>🧬<strong>Java ArrayList</strong>의 원리</h1></div>
+    <p class="text-center" style="font-size: small;">iconcert8's log</p>
+    <div class="m-4">
+        Java의 <strong>ArrayList</strong>는 계속해서 element를 추가할 수 있다.
+        <br><br>
+        기본적으로 ArrayList는 내부적으로 array[]를 가지고 있다. 
+        <br>  
+        <strong>array[]의 경우 최초 길이 이상으로 element를 추가 할 수 없다.</strong> 
+        어떻게 ArrayList는 가변적인 동작이 가능할까?
+        <br><br>
+        ArrayList에 add() 메소드를 타고가다 보면 <strong>newCapacity()</strong>메소드를 볼 수 있다.
+        <img style="width: 100%; max-width: 700px;" class="d-block" src="./img/arraylist-new-capcity.png">
+        <br>
+        newCapacity() 메소드는 array[]의 길이 늘리기 위해 새로운 길이를 반환한다.
+        <br>
+        <strong>새 길이 = 기존 길이 + (기존 길이 * 0.5)</strong>
+        <br><br>
+        그리고 새 길이로 <strong>array[]를 초기화 하고, 기존 배열을 복사한다.</strong>
+        <img style="width: 100%; max-width: 700px;" class="d-block" src="./img/arraylist-grow.png">
+        <br>
+        결국, <strong>ArrayList는 내부배열을 재할당 함으로써 가변적인 길이를 갖게 되는 것이다.</strong>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
