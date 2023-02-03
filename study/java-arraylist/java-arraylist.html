@@ -15,6 +15,7 @@
     <p class="text-center" style="font-size: small;">iconcert8's log</p>
     <div class="m-4 d-flex justify-content-center">
       <div class="d-inline-block limit-width">
+        <h2>가변 배열?</h2>
         Java의 <strong>ArrayList</strong>는 계속해서 element를 추가할 수 있다.
         <br><br>
         기본적으로 ArrayList는 내부적으로 array[]를 가지고 있다. 
@@ -22,6 +23,7 @@
         <strong>array[]의 경우 최초 길이 이상으로 element를 추가 할 수 없다.</strong> 
         어떻게 ArrayList는 가변적인 동작이 가능할까?
         <br><br>
+        <h2>원리</h2>
         ArrayList에 add() 메소드를 타고가다 보면 <strong>newCapacity()</strong> 메소드를 볼 수 있다.
         <img style="width: 100%;" class="d-block limit-width" src="./img/arraylist-new-capcity.png">
         <br>
