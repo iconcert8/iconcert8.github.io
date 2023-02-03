@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/float-button.js" type="text/javascript" defer></script>
+    <title>트랜잭션 병행제어 기법</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      td{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <float-button href="/study/study.html"></float-button>
+    <div class="ms-5 me-4 mt-4 text-center"><h1>🗄️트랜잭션 병행제어 기법</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-03</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>병행 제어(Concurrency Control)</h2>
+            다수의 트랜잭션이 병행(Concurrency)하게 실행 될 때 <strong>데이터베이스의 일관성을 해치지 않게 하기위해 트랜잭션을 제어</strong>하는 것을 말한다.
+            <br><br>
+            제어 없이 트랜잭션 병행 실행시 다음과 같은 문제점들이 있다.
+            <br><br>
+            <strong>1) 갱신 분실(Lost Update)</strong>
+            <br>
+            트랜잭션들이 동시에 갱신 작업을 하다가 한 트랜잭션의 갱신작업이 분실된다.
+            <br><br>
+            <strong>2) 모순성(Inconsistency)</strong>
+            <br>
+            트랜잭션들이 동시에 갱신 작업을 하다가 데이터의 일관성이 깨지는 경우이다.
+            <br><br>
+            <strong>3) 연쇄 복귀(Cascading Rollback)</strong>
+            <br>
+            트랜잭션들이 동시에 작업을 하다가 한 트랜잭션이 실패를 하면 같은 자원의 다른 트랜잭션들도 연쇄적으로 Rollback 되는 현상이다.
+            <br><br>
+            <strong>4) 비완료 의존성(Uncommited Dependency)</strong>
+            <br>
+            한 개의 트랜잭션이 실패 하였을 때, Rollback 전에 다른 트랜잭션이 작업 결과를 참조하는 현상이다.
+            <br><br>
+            <h2>병행 제어 기법</h2>
+            <strong>1) Locking</strong>
+            <br>
+            기본적으로 Shared Lock(읽기), Exclusive Lock(쓰기) 2가지가 존재한다.
+            <br><br>
+            <table>
+              <tbody>
+                <tr>
+                  <td></td><td><strong>Shared Lock</strong></td><td><strong>Exclusive Lock</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Shared Lock</strong></td><td>O</td><td>X</td>
+                </tr>
+                <tr>
+                  <td><strong>Exclusive Lock</strong></td><td>X</td><td>X</td>
+                </tr>
+              </tbody>
+            </table>
+            <span>O: 접근 허용, X: 접근 금지</span>
+            <br><br>
+            접근 자원에 Lock을 걸어 다른 트랜잭션에서 접근을 못하게 한다.
+            Locking 범위가 클 수록 병행 능력이 떨어진다.
+            <br><br>
+            <strong>2) 2-Phase Locking</strong>
+            <br>
+            Locking 기법은 직렬가능성이 아닌 경우가 생긴다. unlock을 빨리 풀어버려서 중간에 다른 트랜잭션이 끼어들고 이는 순차적인 트랜잭션의 결과와 다른 데이터 결과를 초래한다.
+            <br><br>
+            2-Phase Locking 기법을 사용하면 직렬가능성을 보장한다. 확장 단계(2번의 lock)와 축소 단계(2번의 unlock)과정을 거친다.
+            <br><br>
+            *직렬가능성: 트랜잭션을 순차적으로 실행한 결과와 동일한 결과를 보장하는 성질.
+            <br><br>
+            <strong>3) Timestamp Ordering</strong>
+            <br>
+            타임스탬프 순서에 따라 직렬화 한다. Deadlock이 발생하지 않는다.
+            <br><br>
+            <strong>4) Optimistic Concurrency Control</strong>
+            <br>
+            직렬성이 보장 될 것(낙관적)이라는 믿음으로 일단 실행한다. 이후에 직렬성을 검사만 한다.
+            <br>
+            사본에 저장해놓고 있다가, 문제가 없다는 것이 판단되면 실제 저장소에 저장한다.
+            <br><br>
+            <strong>5) Multi-version Concurrency Control</strong>
+            여러 버전의 타임스탬프를 사용한다. 그 중 직렬가능성 보장되는 버전을 선택한다.
+
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
