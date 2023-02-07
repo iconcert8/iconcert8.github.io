@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Mutex vs Semaphore</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>🌱Mutex vs Semaphore</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-07</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+          <h2>Race Condition</h2>
+          자원에 접근하는 경쟁상태를 말한다. 접근제어를 하기 위해서는 Mutex 혹은 Semaphore가 필요하다.
+
+          <br><br>
+          <h2>Semaphore</h2>
+          자원에 접근 가능한 수(동기화 대상 수)가 1개 이상이다. 공통으로 관리하는 값(Counter)을 이용해 접근 가능한지를 판단한다. Semaphore를 소유하지 않은 스레드가 Semaphore를 해제할 수 있다. Semaphore는 소유하는 형태가 아닌 것이다.
+
+          <br><br>
+          <h2>Mutex</h2>
+          자원에 접근 가능한 수(동기화 대상 수)가 1개이다. 자원을 소유하는 형태이다. 해당 자원을 소유하면 다른 경쟁자들은 기다려야 한다. 자원사용이 끝나면 사용해제 한다. 이진 세마포어라고도 한다.
+
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
