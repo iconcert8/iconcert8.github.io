@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Paging, Segmentaion</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>🖥️Paging, Segmentaion</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-07</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+          <h2>단편화(Fragmentation)</h2>
+          프로세스를 메모리로 가져올 때 프로세스 메모리의 연속성 때문에 사용하지 못하는 메모리 공간들이 생긴다. 
+          이를 <strong>단편화</strong>라고 한다.
+          <br><br>
+          <strong>내부 단편화</strong>
+          <br>프로세스 데이터를 고정사이즈 단위로 메모리에 올리면 고정사이즈 내에 사용하지 않는 공간들이 생긴다.
+          <br><br>
+          <strong>외부 단편화</strong>
+          <br>전체 메모리 영역에서 연속성을 지닌 프로세스 데이터를 올리기에는 부족한 공간들이 생기고 결국 사용하지 못하는 공간이 존재하게 된다. 
+          
+          <br><br>
+          <h2>Paging(페이징)</h2>
+          프로세스 데이터를 고정된 크기로 분할하여 메모리에 올리는 방식이다. 이때 단위를 페이지라고 한다.
+          <br><br>고정된 크기로 메모리에 올리기 때문에 내부단편화가 발생한다.
+          <br><br>
+          <h2>Sementation(세그멘테이션)</h2>
+          프로세스 데이터를 논리적 단위로 분할하여 메모리에 올린다.
+          <br><br>가변적인 크기로 메모리에 올리기 때문에 외부단편화가 발생한다.
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
