@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>TLS / SSL</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>🌏TLS / SSL</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-07</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+          <h2>SSL(Secure Sockets Layer)</h2>
+          웹사이트와 브라우저 사이에 전송되는 데이터를 암호화하여 보호하는 기술이다.
+          <br><br>
+          <strong>TLS(Transport Layer Security)</strong>는 SSL의 업데이트 버전이다.
+          
+          <br><br>
+          <h2>HTTPS</h2>
+          SSL을 사용하는 웹사이트는 URL에 <strong>https://</strong>를 사용한다.
+          <br>
+          클라이언트와 서버간에 handshake를 통해 인증이 이루어진다.
+
+          <br><br>
+          <h2>SSL Handshake</h2>
+          1) 클라이언트가 서버에게 '버전', '암호 알고리즘 목록', '압축 방식', '랜덤 데이터'을 담아 보낸다.
+          <br><br>
+          2) 서버는 '세션ID', 'CA공개인증서', '랜덤 데이터'를 보낸다. 클라이언트의 암호 알고리즘 중 1개 선택해서 보낸다. 
+          <br><br>
+          3) 서버가 보낸 CA인증서가 유효한지 체크한다. <strong>브라우저에 CA기관의 공개키가 있다.</strong> 인증서가 복호화 되면 거기에 <strong>서버의 공개키</strong>가 있다.
+          <br><br>
+          4) 클라이언트는 위의 2개의 랜덤데이터를 이용해 'pre master secret 키'를 생성한다. 서버의 공개키로 암호화하여  'pre master secret 키'를 서버에게 보낸다.
+          <br><br>
+          5) 클라이언트와 서버는 'pre master secret 키'를 'master secret 키'로 변환한다. 이것이 이제 <strong>대칭키</strong>이다.
+          <br><br>
+          6) 클라이언트는 대칭키로 'Finished'를 암호화하여 보낸다.
+          <br><br>
+          7) 서버에서 확인 후 'Finished' 답변
+          <br><br>
+          8) 대칭키로 통신
+
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
