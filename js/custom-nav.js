@@ -28,9 +28,9 @@ class CustomNav extends HTMLElement {
               left: 4px;
               white-space: nowrap;">
               <div style="
-              display: inline-block;
-              height: 100%;
-              vertical-align: middle;">
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;">
               </div>
               <i id="back-button-icon" style="font-size: 30px;" class="align-middle bi bi-arrow-left-short"></i>
           </a>
