@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>OAuth란?</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>🔒OAuth란?</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-07</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>OAuth</h2>
+            다른 서비스의 인증정보로 접근권한을 부여 받을 수 있는 표준 프로토콜이다.
+            <br>구글 로그인, 페이스북 로그인 기능이 바로 OAuth이다.
+
+            <br><br>
+            <h2>동작 방식</h2>
+            1) 유저가 클라이언트 서비스에 로그인 요청
+            <br><br>
+            2) 클라이언트 서비스에서 인증 서버(구글, 페이스북)에 로그인 요청
+            <br><br>
+            3) 인증 서버에서 유저에게 로그인 페이지 제공
+            <br><br>
+            4) 유저는 인증 서버의 로그인 페이지로 로그인
+            <br><br>
+            5) 인증 서버는 유저에게 Authorization Code 제공
+            <br><br>
+            6) 클라이언트 서비스로 리다이렉트, Authorization Code 클라이언트 서비스에 전달
+            <br><br>
+            7) 클라이언트 서비스는 Authorization Code, Client ID, Client Secret을 가지고 인증 서버에게 Accsess Token 요청
+            <br><br>
+            8) 클라이언트 서비스는 응답 받은 Access Token을 DB에 저장
+            <br><br>
+            9) 유저 로그인 성공
+            <br><br>
+            10) 유저가 클라이언트 서비스에 리소스 요청
+            <br><br>
+            11) 클라이언트 서비스는 유저와 매핑된 Access Token을 가지고 리소스 서버에 요청
+            <br><br>
+            12) 리소스 응답
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
