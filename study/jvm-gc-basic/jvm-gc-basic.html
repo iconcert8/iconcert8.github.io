@@ -38,7 +38,33 @@
 
             <br><br>
             <h2>GC 기본 동작</h2>
-
+            <div class="p-2">
+              <strong>Minor GC</strong>
+              <br>Young영역에서 구동되는 GC이다. Young 영역은 3개의 구역으로 나뉜다.
+              <div class="px-3">
+                <br>
+                <strong>Eden</strong> | <strong>Surivor 0</strong> | <strong>Surivor 1</strong>
+                <br><br>
+                - 최초 객체가 생성되면 Eden영역에 할당된다. 
+                <br>- Eden 영역에서 참조가 유지된 객체는 활성화 된 Survivor영역으로 옮겨진다.
+                <br>- 현재 Survivor영역이 가득차면 참조가 유지된 객체는 다른 Survivor영역으로 옮겨지고 기존 Survivor영역의 객체는 모두 해제한다.<strong>(stop-and-copy)</strong>
+                <br>- 위 동작이 반복되고 일정 기준을 넘은 Surivor영역 객체는 Old영역으로 넘어가게 된다.(HotSpot JVM은 기본값 31을 넘기면 Old영역을 넘어간다.)
+              </div>
+              <br>
+              <strong>Major GC</strong>
+              <br>Full GC라고도 하며 Old영역을 GC한다. Old영역이 차게되면 GC가 발생한다. Old영역은 크기 때문에 시간이 더 오래걸린다.
+              <br><br>
+              다음은 기본적인 개념의 GC 알고리즘이며 후에 나오는 대부분의 GC 알고리즘은 발전된 형태이다. 다음 문서에서 설명 할 예정이다.         
+              <br><br>
+              <strong>mark-sweep-compact</strong>
+              <div class="px-3">
+                <strong>mark</strong> 참조된 객체를 훑는다. 참조가 끊긴 객체는 제외된다.
+                <br>
+                <strong>sweep</strong> 참조가 끊긴 객체를 메모리 해제한다. 
+                <br>
+                <strong>compact</strong> 단편화가 생긴 메모리 공간을 객체를 옮겨 정렬시킨다.  
+              </div>
+            </div>
         </div>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
