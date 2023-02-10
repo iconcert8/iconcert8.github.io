@@ -16,7 +16,63 @@
     <p class="text-center text-secondary" style="font-size: x-small;">2023-02-10</p>
     <div class="m-4 d-flex justify-content-center">
         <div class="d-inline-block limit-width">
-            작업 중
+          <h2>Z GC</h2>
+          Java 11부터 실험적으로 도입되었고 Java 15부터 Production Ready가 된 GC이다. 큰 메모리에서 효율적으로 Garbage Collect 하기위한 GC이다. STW(stop-the-world) 시간을 10ms 이하로 유지한다.
+          
+          <br><br>
+          Z GC는 G1 GC와 다르게 Region을 ZPage라는 단위로 나눈다.
+          <br>
+          ZPage는
+          <div class="p-2">
+            <strong>small</strong> 2MB 크기의 Region. 단일 객체 크기 제한은 265K 이하이다.
+            <br>
+            <strong>medium</strong> 32MB 크기의 Region. 단일 객체 크기 제한은 4M 이하이다.
+            <br>
+            <strong>Large</strong> x*2MB 크기의 Region. 단일 객체 크기 제한은 4M 초과이다.
+          </div>
+          
+          <br>
+          <strong>Z GC는 2가지의 중요한 개념을 가지고 동작을 한다. Colored Pointer와 Load Barrier다.</strong>
+          <br><br>
+          <h2>Colored Pointer</h2>
+          객체를 가리키는 변수의 포인터 64bit 중 4bit를 활용해 Marking을 한다. 
+          <br><br>
+          Compact 과정에서 객체가 이동하는데 값을 업데이트 하면 이동 전의 주소에 값을 업데이트 하여 <strong>업데이트 값이 분실</strong>되는 경우가 생긴다.
+          <br><br>
+          이를 해결하는 방법으로 4bit를 활용해 논리적 주소를 동일한 물리적 주소로 매핑되게 만들어 객체가 이동시에도 물리적주소로 접근이 되어 이전주소를 참조하는 일이 없게 만든다.
+          <br><br>
+          다음은 각 bit의 의미이다.
+          <div class="p-2">
+            <strong>Finalizable</strong> Finalizer를 통해서만 참조되는 객체를 GC한다.
+            <br>
+            <strong>Remapped</strong> 재배치 여부를 판단하는 mark이다.
+            <br>
+            <strong>Marked 1</strong> Live 객체
+            <br>
+            <strong>Marked 0</strong> Live 객체
+            <br>
+          </div>
+
+          <br>
+          <h2>Load Barrier</h2>
+          JIT 컴파일러에 주입된 코드이다. 객체를 참조할 때 만나게 되는 코드이다. 
+          Colorerd Pointer가 bad color이면 mark/relocate/remapping 한다.
+          <br><br>
+          <h2>동작 과정</h2>
+          <div class="p-2">
+            <strong>Root Set Mark</strong> STW 발생. Root 객체를 찾아 표시한다.
+            <br>
+            <strong>Concurrent Mark/Remap</strong> Root 객체부터 참조 탐색하면서 mark 표시한다. 
+            이 단계에서 Load Barrier가 bad color를 확인하여 buffer에 추가한다.
+            <br>
+            <strong>Mark End</strong> STW 발생. Local Thread를 동기화 하고, bad color buffer를 처리한다.
+            <br>
+            <strong>Concurrent Prepare for Relocate</strong> 재배치 하려는 영역을 찾아 Relocation Set 배치.
+            <br>
+            <strong>Relocate Start</strong> STW 발생. Relocation Set에서 Root 참조의 객체들을 재배치한다. 
+            <br>
+            <strong>Concurrent Relocate</strong> Load Barrier를 통해 모든 객체 재배치 및 참조 수정이 된다.
+          </div>
         </div>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
