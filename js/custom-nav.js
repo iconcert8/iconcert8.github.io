@@ -10,7 +10,7 @@ class CustomNav extends HTMLElement {
         #back-button-icon{
           color: cornflowerblue;
         }
-        #back-button:hover #float-button-icon{
+        #back-button:hover #back-button-icon{
           color: darkslateblue;
         }
         body{
