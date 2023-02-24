@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Java Fork/Join Framework</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>📜Java Fork/Join Framework</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-24</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>Fork/Join Framework</h2>
+            병렬 스레드 처리를 효율적으로 하게 도와주는 Java 라이브러리이다. 
+            <strong>분할/정복 알고리즘</strong>을 차용해 Task를 나누고 스레드에서 처리 후 병합하는 과정을 거친다.
+
+            <br><br>
+            <h2>사용 방법</h2>
+            반환 값이 있는 <strong>RecursiveTask&lt;T&gt;</strong>, 반환 값이 없는 <strong>RecursiveAction</strong>을 구현하는 2가지가 있다.
+            <br><br>
+            
+            RecusiveTask&lt;T&gt; 예제만 보기로 한다. 다음은 1~10의 숫자를 모두 더하는 예시이다.
+            <br><br>
+            <p class="text-secondary" style="font-size: small;"><strong>*ForkJoinPool</strong>의 스레드들은 자신의 작업이 다 끝나고 작업이 없으면 다른 스레드의 작업을 가져와서 처리한다.</p>
+<pre class="p-4 my-2 bg-light">
+public static void main(String[] args) {
+    ForkJoinPool forkJoinPool = new ForkJoinPool(3);
+    List<Integer> list = new ArrayList&lt;&gt;() {{
+        addAll(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+    }};
+
+    MyRecursiveTask recursiveTask = new MyRecursiveTask(list);
+    Future&lt;Integer&gt; sum = forkJoinPool.submit(recursiveTask);
+
+    try {
+        System.out.println("sum : " + sum.get());
+        forkJoinPool.shutdown();
+        System.out.println(forkJoinPool.awaitTermination(1000, TimeUnit.MILLISECONDS));
+    } catch (InterruptedException | ExecutionException e) {
+        throw new RuntimeException(e);
+    }
+}
+
+public static class MyRecursiveTask extends RecursiveTask&lt;Integer&gt; {
+    List&lt;Integer&gt; values;
+
+    public MyRecursiveTask(List&lt;Integer&gt; values) {
+        this.values = values;
+    }
+
+    @Override
+    protected Integer compute() {
+        if (values.size() > 2) {
+            int size = values.size();
+            List&lt;Integer&gt; list1 = values.subList(0, size / 2);
+            List&lt;Integer&gt; list2 = values.subList(size / 2, size);
+
+            MyRecursiveTask subTask1 = new MyRecursiveTask(list1);
+            MyRecursiveTask subTask2 = new MyRecursiveTask(list2);
+            System.out.println(Thread.currentThread().getName() + " divide fork: " + list1 + ", " + list2);
+            subTask1.fork();
+            subTask2.fork();
+
+            return subTask1.join() + subTask2.join();
+        }
+        int sum = values.stream().reduce(Integer::sum).get();
+        System.out.println(Thread.currentThread().getName() + " : " + values + ", sum : " + sum);
+        return sum;
+    }
+}
+</pre>
+
+        <br>
+        결과 출력
+<pre class="p-4 my-2 bg-light">
+ForkJoinPool-1-worker-3 divide fork: [1, 2, 3, 4, 5], [6, 7, 8, 9, 10]
+ForkJoinPool-1-worker-3 divide fork: [1, 2], [3, 4, 5]
+ForkJoinPool-1-worker-5 divide fork: [6, 7], [8, 9, 10]
+ForkJoinPool-1-worker-7 divide fork: [3], [4, 5]
+ForkJoinPool-1-worker-5 : [6, 7], sum : 13
+ForkJoinPool-1-worker-7 : [3], sum : 3
+ForkJoinPool-1-worker-3 : [1, 2], sum : 3
+ForkJoinPool-1-worker-5 divide fork: [8], [9, 10]
+ForkJoinPool-1-worker-7 : [4, 5], sum : 9
+ForkJoinPool-1-worker-5 : [8], sum : 8
+ForkJoinPool-1-worker-7 : [9, 10], sum : 19
+sum : 55
+true
+</pre>      
+            <div class="m-2 text-secondary">
+                - 리스트의 사이즈가 <strong>2개 이하</strong>가 될 때 까지 나눈다.
+                <br>
+                - 2개 이하가 된 리스트는 작업이 가능한 스레드가 더하기 연산을 진행한다.
+                <br>
+                - 결과 값을 반환한다.
+            </div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
