@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Java ExecutorService</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>📜Java ExecutorService</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-27</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>ExecutorService</h2>
+            Java에서 스레드 풀의 사용을 효과적으로 돕는 라이브러리이다. Java 5부터 도입되었다.
+            스레드 풀은 큐에 작업을 담아두고 실행가능한 스레드가 큐에서 작업을 가져와 실행하는 형태를 말한다.
+            <br><br>
+            일반적으로 잦은 스레드 생성/해제는 오버헤드가 있어 스레드 풀의 사용이 효과적이다.
+            그러나 스레드 풀 관리는 손이 많이 가는 작업이다. 
+            스레드 생성 개수 제한, 스레드 라이프사이클(생성, 종료), 스레드 스케쥴링과 같이 많은 고려가 필요하다.
+            <br><br>
+            ExecutorService는 스레드의 생성/관리/실행/해제 역할을 모두 맡는다. 작업자는 스레드에서 실행 할 함수에만 집중하여 개발하면 된다.
+            <br><br>
+            <h2>기본 제공 스레드 풀</h2>
+            <div class="p-2">
+              Executors.newFixedThreadPool(int n)
+              <p class="text-secondary">n개의 스레드로 고정되어 있는 스레드 풀</p>
+              Executors.newCachedThreadPool
+              <p class="text-secondary">동적으로 필요한 만큼 스레드가 생성된다. 60초간 작업이 없으면 pool에서 스레드가 제거된다.</p>
+              Executors.newSingleThreadExecutor
+              <p class="text-secondary">1개의 스레드가 생성된다.</p>
+              Executors.newScheduledThreadPool
+              <p class="text-secondary">일정 시간 뒤에 작업을 하도록 해주는 스레드 풀이다. 타이머 기능을 스레드 풀에 넣어 놓은 것이다.</p>
+            </div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
