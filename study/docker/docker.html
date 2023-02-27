@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Docker란?</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>🚢Docker란?</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-27</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>Docker</h2>
+            컨테이너 기반의 소프트웨어 개발 플랫폼이다. 컨테이너를 제공/실행 시켜준다. Docker는 Server-Client 구조로 CLI 명령 또한 서버 API를 호출하는 방식이다.
+            <br>
+            <span style="font-size: small;"><a href="/study/virtualization/virtualization.html" target="_blank">🛤️ Virtualization(가상화)</a> <strong>컨테이너</strong> 설명 참조</span>
+
+            <br><br>
+            <h2>Docker 특징</h2>
+            <div class="p-2">
+                <strong>오버레이 네트워크</strong>
+                <p class="text-secondary">
+                    물리 네트워크 위에 성립되는 가상의 네트워크이다.
+                </p>
+                <strong>유니온 파일시스템</strong>
+                <p class="text-secondary">
+                    여러개의 파일 시스템을 하나의 파일 시스템으로 마운트 하는 기능이다.
+                    <br><br>
+                    중복되는 파일 레이어에 대해서 다운로드를 건너뛴다.
+                    <br><br>
+                    상위 레이어에서 하위 레이어에 쓰기 작업을 할 경우 하위 레이어를 복사하여 쓰기작업을 한다(COW, Copy On Write).
+                </p>
+            </div>
+            Docker는 위의 2가지 특징 기능을 활용해 컨테이너의 네트워크와 파일 시스템을 구성하여 효율적으로 환경을 구성할 수 있게 만들어 준다.
+            <br><br>
+            그리고 <strong>Dockerfile</strong>을 활용한 커스텀 이미지(컨테이너 틀) 제작을 가능케 하고, <strong>docker-compose</strong>로 다중 컨테이너 설정 작업을 지원하여 개발 편의성을 높인다.
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
