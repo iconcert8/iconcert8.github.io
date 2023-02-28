@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Java 버전 변경사항</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>📜Java 버전 변경사항</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-28</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>Java 8</h2>
+            <p class="px-2">
+                <strong>JVM Method Area/Permanent Gen 삭제</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    Java 8 이후 해당영역은 없어지고 class, interface, method 정보는 Metaspace영역으로 옮겨갔다. static field, String pool은 Heap 영역으로 옮겨갔다.
+                    <a href="/study/jvm/jvm.html" target="_blank">🏗️JVM 그리고 구조</a>
+                </span>
+                <br><br>
+                <strong>Parallel GC</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    default GC로 Parallel GC를 사용한다. 
+                    <a href="/study/jvm-gc-algorithm/jvm-gc-algorithm.html" target="_blank">🧹JVM GC 알고리즘</a>
+                </span>
+                <br><br>
+                <strong>Stream</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    collection에 담겨 있는 element를 내부 순회하는 코드 패턴, 사용 전까지 element의 계산을 미룬다. 함수형과 결합되어 선언형으로 코드가 이루어진다.
+                </span>
+                <br><br>
+                <strong>Lambda</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    함수를 선언 없이 단순히 구현하고 사용하는 형태이다. 익명함수를 간략화 한다.
+                </span>
+                <br><br>
+                <strong>Instant</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    기존 Date는 몇가지 문제가 있었다. 1)가변객체, 2)윤초 고려치 않음, 3)월(month)을 0부터 표기, 4)2038년 이후 표기날짜 제한.
+                    문제를 해결하고자 새로운 날짜 Util을 제공하게 된다. 
+                </span>
+                <br><br>
+                <strong>default</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    인터페이스에는 구현코드가 들어가면 안된다. 그러나 default 메소드는 이를 가능케 한다.
+                    default 메소드의 목적은 코드 확장성에 있다.
+                    <br>
+                    &nbsp;기존 인터페이스에 기능을 추가하려면 추상 메소드가 추가되고 하위 구현 클래스들은 강제로 메소드를 오버라이드 해야 했다.
+                    이는 인터페이스가 기능 확장에 매우 닫혀있게 만들었다. 
+                    <br>
+                    &nbsp;default 메소드는 인터페이스에 메소드를 구현할 수 있게 한다. 
+                    그리고 하위 구현 클래스들은 아무런 작업이 필요없다. 
+                    단지 해당 메소드의 기능이 구현클래스에 맞지 않으면 오버라이드 하면된다.
+                </span>
+                <br><br>
+                <strong>메소드 참조(::)</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    파라미터가 생략되는 함수 사용 형태이다. 
+                    <br>람다의 경우
+                    <code>(str)->System.out.println(str)</code>
+                    로 표현되었다면,
+                    <br>메소드 참조는
+                    <code>System.out::println</code>
+                    로 사용된다.
+                </span>
+                <br><br>
+                <strong>Optional</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    Nullable 인자를 감싸주는 클래스이다. null 체크를 도와주고 처리도 간단히 할 수 있게 도와준다.
+                    무엇보다 nullable 하다라는 인지를 시켜주기 때문에 코드의 시인성과 안정성을 높일 수 있다.
+                </span>
+            </p>
+            <h2>Java 11</h2>
+            <p class="px-2">
+                <strong>G1GC GC</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    default GC로 G1GC GC를 사용한다. 
+                    <a href="/study/jvm-g1-gc/jvm-g1-gc.html" target="_blank">🧹JVM G1 GC</a>
+                </span>
+                <br><br>
+                <strong>String 메소드 추가</strong>
+                <br>
+                <span class="text-secondary" style="font-size: small;">
+                    strip() - 문자열 앞, 뒤 공백제거. 기존 trim()이 제거하지 못하는 유니코드의 공백이 있었고 이를 보완하였다.
+                    <br>
+                    stripLeading() - 앞 공백제거
+                    <br>
+                    stripTrailing() - 뒤 공백제거
+                    <br>
+                    isBlank() - 비어있거나, 공백문자 포함 확인. 기존 isEmpty()는 공백도 문자가 있는것으로 판별.
+                    <br>
+                    repeat(int n) - n번 반복 문자열 반환
+                </span>
+                <br><br>
+                <strong>nio.file.Files 메소드 추가</strong>
+                <br>
+                <span class="text-secondary" style="font-size: small;">
+                    writeString - 파일에 문자열 쓰기
+                    <br>
+                    readString - 파일 문자열 읽기
+                    <br>
+                    isSameFile - path가 같은 파일을 가리키면 true
+                </span>
+                <br><br>
+                <strong>Lambda 'var' 변수</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    Lambda에 var 로컬변수가 사용 가능하다.
+                </span>
+                <br><br>
+                <strong>Java 파일 실행</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    java 파일을 컴파일 안하고 실행이 가능하다.
+                </span>
+                <br><br>
+                <strong>Http Client 지원</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    Http Client를 정식으로 도입했다. 전체적인 API 성능향상이 있다.
+                </span>
+                <br><br>
+                <strong>기타</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    비작동 GC 지원(테스트 용), <strong>try-with-resource</strong>, Collection.of()
+                </span>
+            </p>
+            <h2>Java 17</h2>
+            <p class="px-2">
+                <strong>난수 API 개선 클래스</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    'RandomGenerator' 난수 Util이 추가되었다.
+                </span>
+                <br><br>
+                <strong>sealed, no-sealed, permits</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    상속을 제한하는 봉인키워드 추가. 해제 및 허용 옵션도 제공.
+                </span>
+                <br><br>
+                <strong>switch 함수 식 사용</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    <pre class="text-bg-light p-2">
+boolean ok = switch(id) {
+    case "1", "2" -> {
+        yield true;
+    }
+    case "3" -> false;
+    default -> false;
+}</pre>
+                </span>
+                <br>
+                <strong>텍스트 블록</strong>
+                <span class="text-secondary" style="font-size: small;">
+                    """ content """ , 형태로 문자를 편리하게 작성 가능하다. 기존처럼 개행을 (+)추가 연산자를 이용할 필요가 없다. 
+                </span>
+                <pre class="text-bg-light p-2">
+String json = """
+        "json":{
+            "key": "value"
+        }
+        """;
+}</pre>
+            </p>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
