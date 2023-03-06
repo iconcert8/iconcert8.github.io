@@ -29,7 +29,8 @@
             <div class="p-2">
                 <strong>Checked Exception</strong> RuntimeException의 상속을 받지 않은 Exception 클래스이다.
                 Try-Catch/Throws를 강제한다. 만약 하지 않으면 컴파일이 되지 않는다. 
-                트랜잭션 Rollback이 Checked Exception에 의해서는 실행되지 않는다. 
+                Spring에서는 기본적으로 트랜잭션 Rollback이 Checked Exception에 의해서는 실행되지 않는다. 
+                설정에 의해 Rollback 예외를 지정할 수 있다.
                 <br><br>
                 FileNotFoundException, ClassNotFoundException 등이 있다.
                 
