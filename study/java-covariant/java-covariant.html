@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>Java 공변/불공변</title>
+  </head>
+  <body>
+    <custom-nav href="/study/study.html"></custom-nav>
+    <div class="mx-4 mt-4 text-center"><h1>📜Java 공변/불공변</h1></div>
+    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
+    <p class="text-center text-secondary" style="font-size: x-small;">2023-03-06</p>
+    <div class="m-4 d-flex justify-content-center">
+        <div class="d-inline-block limit-width">
+            <h2>공변(Covariant)</h2>
+            <p>
+                Java에서 배열과 리스트의 가장 큰 차이는 <strong>공변</strong>이다.
+                <br><br>
+                공변이란? Super라는 상위 클래스와 Sub라는 하위 클래스가 있을 때, Sub[] 배열도 Super[] 배열의 하위 클래스가 되는것을 말한다.
+                즉, 타입 관계과 함께 변하(공변)는 것을 말한다.
+                <br><br>
+                그래서 Java 배열에서는 다음 코드가 가능하다.
+<pre class="p-2 bg-light">
+<span class="text-success">(O)</span> Object[] array = new Integer[1];
+</pre>
+            </p>
+
+            <h2>불공변(Invariant)</h2>
+            <p>
+                불공변이란? Super라는 상위 클래스와 Sub라는 하위 클래스가 있을 때, Collection&lt;Super&gt;, Collection&lt;Sub&gt;는 서로 다른 클래스이다. 
+                즉, 타입 관계과 함께 변하지 않는(불공변) 것을 말한다.
+                <br><br>
+                그래서 Java Generic 에서는 다음 코드가 불가능하다.
+<pre class="p-2 bg-light">
+<span class="text-danger">(X)</span> ArrayList&lt;Object&gt; list = new ArrayList&lt;Integer&gt;(); 
+</pre>
+            </p>
+
+            <h2>구체화/비구체화 타입</h2>
+            위의 특성이 있어 배열과 리스트(Generic)는 런타임 상태도 다르다.
+            <br><br>
+            배열은 런타임에도 자신에게 담기는 원소의 타입을 검사하여야 한다. 
+            때문에 타입정보를 항상 가지고 있다. 그리고 이는 실행중 타입이 다르면 에러가 발생하게 된다.
+            <br><br>
+            제너릭은 컴파일 타임에 이미 타입검사가 완료된다. 런타임에는 타입을 소거시켜 타입정보가 없다. 
+            소거는 레거시 코드와 제너릭 코드를 함께 사용할 수 있도록 하는 목적에서 나오게 되었다.
+            <br><br>
+            타입 정보가 런타임에 소거되지 않는 것을 <strong>구체화 타입</strong>, 
+            소거되는 것을 <strong>비구체화 타입</strong>이라고 한다.
+            <br><br>
+            에러가 런타임으로 넘어가는 것은 지양해야 한다. 
+            그리고 리스트(Generic)는 컴파일 타임에 Type 에러가 발생하기 때문에 배열보다 코드 안정성이 높다. 
+            <br><br>
+            결론적으로 코드의 안정적인 측면에서 배열보다는 리스트를 사용하는 것이 좋다.
+
+            <br><br><br>
+            <p class="text-secondary" style="font-size: small;">
+                (참조)
+                <br>Effective Java 3/E - 배열보다는 리스트를 사용하라
+            </p>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
