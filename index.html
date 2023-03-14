@@ -10,12 +10,132 @@
   </head>
   <body>
     <div class="text-center">
-      <h1 class="mx-4 mt-4">iconcert8's log</h1>
+      <div class="text-center w-100 mt-4" style="position: absolute;">
+        <span style="font-size: x-small; color: white;">클릭하여 <strong>먹이</strong>를 줘보세요</span>
+      </div>
+      <canvas class="mt-4 p-0" id="fishbowl" width="400" height="200"
+        style="
+          background-color: #44C3BC;
+          border-radius: 20px;
+        "></canvas>
+      <h1 class="mx-4 mt-3">iconcert8's log</h1>
       <p style="font-size: small;">Sotfware Enginner</p>
       <a id="about" class="link py-2" href="/about/about.html">🧑<strong>About</strong></a>
       <a id="study" class="link py-2" href="/study/study.html">✏️<strong>Study</strong></a>
       <a id="book" class="link py-2" href="/book/book.html">📚<strong>Book</strong></a>
     </div>
+    <script>
+      class Fish {
+        constructor(ctx, x, y){
+          this.ctx = ctx;
+          this.x = x;
+          this.y = y;
+          this.w = 30;
+          this.h = 20;
+          this.images = [new Image(), new Image()];
+          this.images[0].src = "./img/left-fish.png";
+          this.images[1].src = "./img/right-fish.png";
+          this.image = this.images[0];
+          this.image.onload = ()=>{
+            this.ctx.drawImage(this.images[0], this.x, this.y, this.w, this.h);
+          };
+        }
+
+        move(x, y){
+          if(this.x < x) this.image = this.images[1];
+          else if(this.x > x) this.image = this.images[0];
+          this.x = x;
+          this.y = y;
+          this.ctx.shadowOffsetX = 5;
+          this.ctx.shadowOffsetY = 5;
+          this.ctx.shadowColor = 'black';
+          this.ctx.shadowBlur = 5;
+          this.ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
+        }
+      };
+
+      class Feed{
+        constructor(ctx, x, y, maxY){
+          this.ctx = ctx;
+          this.x = x;
+          this.y = y;
+          this.maxY = maxY;
+          this.radius = 3;
+          this.draw();
+        }
+
+        moveDown(){
+          if(Math.abs(this.maxY - this.y) >= 1){
+            this.y += 0.4;
+          }
+          this.draw();
+        }
+
+        draw(){
+          this.ctx.beginPath();
+          this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+          this.ctx.strokeStyle = "#FFFFFF";
+          this.ctx.stroke();
+        }
+      }
+
+      const canvas = document.getElementById("fishbowl");
+      const ctx = canvas.getContext("2d");
+      const fish = new Fish(ctx, 185, 90);
+      const feed = new Feed(ctx, 100, 100, canvas.height-5);
+
+      let targetFeeds = [feed];
+      canvas.addEventListener(
+        'click', 
+        (event)=>{
+          targetFeeds.push(
+            new Feed(
+              ctx, 
+              event.pageX-canvas.offsetLeft, 
+              event.pageY-canvas.offsetTop, 
+              canvas.height-5)
+            );
+            
+          
+          targetFeeds.sort(
+            (a, b)=>{
+              adist = Math.sqrt(Math.pow(fish.x - a.x, 2) + Math.pow(fish.y - a.y, 2));
+              bdist = Math.sqrt(Math.pow(fish.x - b.x, 2) + Math.pow(fish.y - b.y, 2));
+              return adist - bdist;
+            }
+          );
+        }, 
+        false);
+      
+      let targetX = 185;
+      let targetY = 90;
+      setInterval(()=>{
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if(targetFeeds.length != 0){
+          targetX = targetFeeds[0].x;
+          targetY = targetFeeds[0].y - 10;
+        }
+
+        if(
+          (fish.x-2 <= targetX && (fish.x + 2 + fish.w) >= targetX)
+        && (fish.y-2 <= targetY && (fish.y + 2 + fish.h) >= targetY)){
+          fish.move(fish.x, fish.y);
+          targetFeeds.shift();
+          targetX = Math.floor(Math.random()*(canvas.width - fish.w));
+          targetY = Math.floor(Math.random()*(canvas.height - fish.h));
+        }else{
+          let offsetX = targetX - fish.x;
+          let offsetY = targetY - fish.y;
+          let vector = Math.sqrt(offsetX*offsetX + offsetY*offsetY);
+          let nextX = fish.x + offsetX/vector;
+          let nextY = fish.y + offsetY/vector;
+          fish.move(nextX, nextY);
+        }
+
+        targetFeeds.forEach(f=>f.moveDown());
+      }, 27);
+
+    </script>
     <script>
       const about = document.getElementById("about");
       const aboutInitialHTML = about.innerHTML;
