@@ -21,10 +21,6 @@ class Fish {
   }
 
   draw(){
-    this.ctx.shadowOffsetX = 0;
-    this.ctx.shadowOffsetY = 8;
-    this.ctx.shadowColor = 'black';
-    this.ctx.shadowBlur = 4;
     this.ctx.drawImage(this.image, this.x-this.halfW, this.y-this.halfH, this.w, this.h);
   }
 
@@ -113,18 +109,30 @@ function startFishGame(canvas){
       fish.move(nextX, nextY);
     }
     // Draw all object
-    fish.draw();
-    targetFeeds.forEach(f=>{f.moveDown(); f.draw();});
+    shadowOff(ctx);
     drawInfo(ctx);
+    shadowOn(ctx);
+    targetFeeds.forEach(f=>{f.moveDown(); f.draw();});
+    fish.draw();
   }, 27);
 
   function drawInfo(ctx){
+    ctx.font = "8px Arial"; 
+    ctx.fillStyle = "white";
+    ctx.fillText("클릭하여 먹이를 줘보세요", canvas.width/2 - 50, 16);
+  }
+
+  function shadowOn(ctx){
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 8;
+    ctx.shadowColor = 'black';
+    ctx.shadowBlur = 4;
+  }
+  
+  function shadowOff(ctx){
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.shadowBlur = 0;
-    ctx.font = "8px Arial"; 
-    ctx.fillStyle = "white";
-    ctx.fillText("클릭하여 먹이를 줘보세요", 150, 16);
   }
 }
 
