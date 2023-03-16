@@ -21,10 +21,10 @@ class Fish {
   }
 
   draw(){
-    this.ctx.shadowOffsetX = 5;
-    this.ctx.shadowOffsetY = 5;
+    this.ctx.shadowOffsetX = 0;
+    this.ctx.shadowOffsetY = 8;
     this.ctx.shadowColor = 'black';
-    this.ctx.shadowBlur = 5;
+    this.ctx.shadowBlur = 4;
     this.ctx.drawImage(this.image, this.x-this.halfW, this.y-this.halfH, this.w, this.h);
   }
 
