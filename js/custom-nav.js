@@ -43,33 +43,20 @@ class CustomNav extends HTMLElement {
 
 customElements.define('custom-nav', CustomNav);
 
-
-
 const page = window.location.pathname;
 if(page.startsWith("/study/")){
   const nav = document.getElementsByTagName('custom-nav')[0];
-  const titleElement = document.getElementById('custom-title');
-  const title = nav.nextElementSibling;
-  const titleContent = title.children[0].innerHTML;
+  const navTitle = document.getElementById('custom-title');
+  const originTitle = nav.nextElementSibling.children[0];
+  navTitle.innerHTML = originTitle.innerHTML;
+  navTitle.style.opacity = 0;
 
-  const standardOffset = 10;
-  let showTitle = title.offsetTop - window.scrollY < standardOffset;
-  if(showTitle){
-    titleElement.innerHTML = titleContent;
-    showTitle = true;
-  }
+  const opacityVariable = (1/originTitle.offsetTop);
 
   window.addEventListener('scroll', function(e) {
-    if(title.offsetTop - window.scrollY < standardOffset){
-      if(!showTitle){
-        titleElement.innerHTML = titleContent;
-        showTitle = true;
-      }
-    }else{
-      if(showTitle){
-        titleElement.innerHTML = '';
-        showTitle = false;
-      }
-    }
+    let offset = originTitle.offsetTop - window.scrollY;
+    navTitle.style.opacity = 1 < (1 - opacityVariable * offset) 
+      ? 1 
+      : (1 - opacityVariable * offset);
   });
 }
