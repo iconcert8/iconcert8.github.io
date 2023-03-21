@@ -11,15 +11,18 @@
       canvas:hover{
         cursor: pointer;
       }
+      a:hover{
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <div class="text-center">
       <h1 class="mx-4 mt-3">iconcert8's log</h1>
       <p style="font-size: small;">Sotfware Engineer</p>
-      <a id="about" class="link py-2" href="/about/about.html">🧑<strong>About</strong></a>
-      <a id="study" class="link py-2" href="/study/study.html">✏️<strong>Study</strong></a>
-      <a id="book" class="link py-2" href="/book/book.html">📚<strong>Book</strong></a>
+      <a id="about" class="link py-2">🧑<strong>About</strong></a>
+      <a id="study" class="link py-2">✏️<strong>Study</strong></a>
+      <a id="book" class="link py-2">📚<strong>Book</strong></a>
       <canvas class="mt-2" id="fishbowl" width="400" height="200"
         style="
           background-color: #44C3BC;
@@ -34,11 +37,11 @@
     <script src="/js/interval-text.js"></script>
     <script>
       const about = document.getElementById("about");
-      registerMouseHoverEvent(about, about.innerHTML, '🧑<strong>', '</strong>', '안녕하세요, 저는..')
+      registerMouseClickWriteIntevalText(about, '🧑<strong>', '</strong>', '안녕하세요, 저는..', "/about/about.html");
       const study = document.getElementById("study");
-      registerMouseHoverEvent(study, study.innerHTML, '✏️<strong>', '</strong>', '학습하고 있어요.')
+      registerMouseClickWriteIntevalText(study, '✏️<strong>', '</strong>', '학습하고 있어요.', "/study/study.html");
       const book = document.getElementById("book");
-      registerMouseHoverEvent(book, book.innerHTML, '📚<strong>', '</strong>', '읽고 있어요.')
+      registerMouseClickWriteIntevalText(book, '📚<strong>', '</strong>', '읽고 있어요.', "/book/book.html");
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

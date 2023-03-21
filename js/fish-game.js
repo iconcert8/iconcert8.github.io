@@ -59,7 +59,7 @@ class Feed{
 function startFishGame(canvas){
   const ctx = canvas.getContext("2d");
   const fish = new Fish(ctx, canvas.width/2, canvas.height/2);
-  const feed = new Feed(ctx, 50, 0, canvas.height-5);
+  const feed = new Feed(ctx, Math.floor(Math.random()*canvas.width), 0, canvas.height-5);
   const targetFeeds = [feed];
   canvas.addEventListener(
     'click', 

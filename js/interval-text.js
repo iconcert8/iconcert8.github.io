@@ -1,4 +1,4 @@
-function registerMouseHoverEvent(element, initialHTML, prefix, sufix, text){
+function registerMouseHoverWriteIntevalText(element, initialHTML, prefix, sufix, text){
   let intervalId = 0;
   element.onmouseenter = ()=>{
     if(intervalId != 0){
@@ -16,13 +16,27 @@ function registerMouseHoverEvent(element, initialHTML, prefix, sufix, text){
   }
 }
 
-function writeIntervalText(element, prefix, sufix, text){
+function registerMouseClickWriteIntevalText(element, prefix, sufix, text, href){
+  let intervalId = 0;
+
+  element.onclick = ()=>{
+    if(intervalId != 0){
+      return;
+    }
+    intervalId = writeIntervalText(element, prefix, sufix, text, href);
+  }
+}
+
+function writeIntervalText(element, prefix, sufix, text, href){
   const words = text.split('');
   let i = 0;
   let str = "";
   return setInterval(()=>{
-    if(i >= words.length) return;
+    if(i >= words.length){
+      window.location.href = href;
+      return;
+    }
     str += words[i++];
     element.innerHTML = prefix + str + sufix;
-  }, 170);
+  }, 140);
 }
