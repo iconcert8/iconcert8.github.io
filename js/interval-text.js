@@ -23,6 +23,7 @@ function registerMouseClickWriteIntevalText(element, prefix, sufix, text, href){
     if(intervalId != 0){
       return;
     }
+    element.style.backgroundColor = '#C8C8C8';
     intervalId = writeIntervalText(element, prefix, sufix, text, href);
   }
 }
