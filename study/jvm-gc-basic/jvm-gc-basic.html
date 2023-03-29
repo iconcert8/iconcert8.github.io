@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/global.css">
-    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <script src="/study/study-template.js" type="text/javascript"></script>
+    <meta
+      id="contentInfo"
+      title="🧹JVM Garbage Collection 개요"
+      date="2023-02-10"
+    />
     <title>JVM Garbage Collection 개요</title>
   </head>
   <body>
-    <custom-nav href="/study/study.html"></custom-nav>
-    <div class="mx-4 mt-4 text-center"><h1>🧹JVM Garbage Collection 개요</h1></div>
-    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
-    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-10</p>
-    <div class="m-4 d-flex justify-content-center">
-        <div class="d-inline-block limit-width">
-            <h2>GC(Garbage Collection)</h2>
-            사용이 끝난 객체를 탐색하여 메모리에서 해제하는 작업을 하는 모듈이다.
-            어떤 GC 알고리즘을 선택하느냐에 따라 성능에 많은 영향을 줄 수 있다.
+    <h2>GC(Garbage Collection)</h2>
+    사용이 끝난 객체를 탐색하여 메모리에서 해제하는 작업을 하는 모듈이다. 어떤
+    GC 알고리즘을 선택하느냐에 따라 성능에 많은 영향을 줄 수 있다.
 
-            <br><br>
-            <h2>GC 기본 원칙</h2>
-            GC를 설계하는 데 있어서 대명제가 2가지 있다.
-            <div class="p-2">
-              <strong>1. 대부분의 객체는 곧 Unreachable 상태가 된다.</strong>
-              <br>
-              <strong>2. Old 객체에서 Young 객체 참조는 낮은 빈도로 발생한다.</strong>
-            </div>
-            Minor GC(Young영역 GC)의 존재이유이다. 대부분의 객체는 일회성으로 사용되고 더이상 필요가 없어진다.
-            최근에 생성된 객체들만 따로 관리하여 GC를 한다면 시간과 비용을 아낄 수 있다. 
-            <br><br>
-            <h2>Stop-the-world</h2>
-            모든 코드 실행을 멈추는 것이다. 객체를 메모리에서 해제하는 과정에서 필수적인 과정이다.
-            <br><br>
-            때문에 GC 알고리즘 목표 중 하나는 stop-the-world의 시간을 최소화 하는 것이다.
+    <br /><br />
+    <h2>GC 기본 원칙</h2>
+    GC를 설계하는 데 있어서 대명제가 2가지 있다.
+    <div class="p-2">
+      <strong>1. 대부분의 객체는 곧 Unreachable 상태가 된다.</strong>
+      <br />
+      <strong>2. Old 객체에서 Young 객체 참조는 낮은 빈도로 발생한다.</strong>
+    </div>
+    Minor GC(Young영역 GC)의 존재이유이다. 대부분의 객체는 일회성으로 사용되고
+    더이상 필요가 없어진다. 최근에 생성된 객체들만 따로 관리하여 GC를 한다면
+    시간과 비용을 아낄 수 있다.
+    <br /><br />
+    <h2>Stop-the-world</h2>
+    모든 코드 실행을 멈추는 것이다. 객체를 메모리에서 해제하는 과정에서 필수적인
+    과정이다.
+    <br /><br />
+    때문에 GC 알고리즘 목표 중 하나는 stop-the-world의 시간을 최소화 하는
+    것이다.
 
-            <br><br>
-            <h2>GC 기본 동작</h2>
-            <div class="p-2">
-              <strong>Minor GC</strong>
-              <br>Young영역에서 구동되는 GC이다. Young 영역은 3개의 구역으로 나뉜다.
-              <div class="px-3">
-                <br>
-                <strong>Eden</strong> | <strong>Surivor 0</strong> | <strong>Surivor 1</strong>
-                <br><br>
-                - 최초 객체가 생성되면 Eden영역에 할당된다. 
-                <br>- Eden 영역에서 참조가 유지된 객체는 활성화 된 Survivor영역으로 옮겨진다.
-                <br>- 현재 Survivor영역이 가득차면 참조가 유지된 객체는 다른 Survivor영역으로 옮겨지고 기존 Survivor영역의 객체는 모두 해제한다.<strong>(stop-and-copy)</strong>
-                <br>- 위 동작이 반복되고 일정 기준을 넘은 Surivor영역 객체는 Old영역으로 넘어가게 된다.(HotSpot JVM은 기본값 31을 넘기면 Old영역을 넘어간다.)
-              </div>
-              <br>
-              <strong>Major GC</strong>
-              <br>Full GC라고도 하며 Old영역을 GC한다. Old영역이 차게되면 GC가 발생한다. Old영역은 크기 때문에 시간이 더 오래걸린다.
-              <br><br>
-              다음은 기본적인 개념의 GC 알고리즘이며 후에 나오는 대부분의 GC 알고리즘은 발전된 형태이다. 알고리즘은 <a href="/study/jvm-gc-algorithm/jvm-gc-algorithm.html" target="_blank">🧹JVM GC 알고리즘</a>에서 다룰 예정이다.         
-              <br><br>
-              mark-sweep-compact
-              <div class="px-3">
-                <strong>mark</strong> 참조된 객체를 훑는다. 참조가 끊긴 객체는 제외된다.
-                <br>
-                <strong>sweep</strong> 참조가 끊긴 객체를 메모리 해제한다. 
-                <br>
-                <strong>compact</strong> 단편화가 생긴 메모리 공간을 객체를 옮겨 정렬시킨다.  
-              </div>
-            </div>
-        </div>
+    <br /><br />
+    <h2>GC 기본 동작</h2>
+    <div class="p-2">
+      <strong>Minor GC</strong>
+      <br />Young영역에서 구동되는 GC이다. Young 영역은 3개의 구역으로 나뉜다.
+      <div class="px-3">
+        <br />
+        <strong>Eden</strong> | <strong>Surivor 0</strong> |
+        <strong>Surivor 1</strong> <br /><br />
+        - 최초 객체가 생성되면 Eden영역에 할당된다.
+        <br />- Eden 영역에서 참조가 유지된 객체는 활성화 된 Survivor영역으로
+        옮겨진다. <br />- 현재 Survivor영역이 가득차면 참조가 유지된 객체는 다른
+        Survivor영역으로 옮겨지고 기존 Survivor영역의 객체는 모두
+        해제한다.<strong>(stop-and-copy)</strong> <br />- 위 동작이 반복되고
+        일정 기준을 넘은 Surivor영역 객체는 Old영역으로 넘어가게 된다.(HotSpot
+        JVM은 기본값 31을 넘기면 Old영역을 넘어간다.)
       </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      <br />
+      <strong>Major GC</strong>
+      <br />Full GC라고도 하며 Old영역을 GC한다. Old영역이 차게되면 GC가
+      발생한다. Old영역은 크기 때문에 시간이 더 오래걸린다. <br /><br />
+      다음은 기본적인 개념의 GC 알고리즘이며 후에 나오는 대부분의 GC 알고리즘은
+      발전된 형태이다. 알고리즘은
+      <a href="/study/jvm-gc-algorithm/jvm-gc-algorithm.html" target="_blank"
+        >🧹JVM GC 알고리즘</a
+      >에서 다룰 예정이다. <br /><br />
+      mark-sweep-compact
+      <div class="px-3">
+        <strong>mark</strong> 참조된 객체를 훑는다. 참조가 끊긴 객체는 제외된다.
+        <br />
+        <strong>sweep</strong> 참조가 끊긴 객체를 메모리 해제한다.
+        <br />
+        <strong>compact</strong> 단편화가 생긴 메모리 공간을 객체를 옮겨
+        정렬시킨다.
+      </div>
+    </div>
   </body>
 </html>

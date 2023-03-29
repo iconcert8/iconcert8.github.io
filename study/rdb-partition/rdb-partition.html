@@ -1,51 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/global.css">
-    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <script src="/study/study-template.js" type="text/javascript"></script>
+    <meta id="contentInfo" title="🗄️RDB Partition" date="2023-03-14" />
     <title>RDB Partition</title>
   </head>
   <body>
-    <custom-nav href="/study/study.html"></custom-nav>
-    <div class="mx-4 mt-4 text-center"><h1>🗄️RDB Partition</h1></div>
-    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
-    <p class="text-center text-secondary" style="font-size: x-small;">2023-03-14</p>
-    <div class="m-4 d-flex justify-content-center">
-        <div class="d-inline-block limit-width">
-            <h2>Partition</h2>
-            테이블을 분리하여 단일 테이블의 크기를 줄인다.
-            크기가 줄어들어 성능을 향상에 도움이 된다.
-            <br><br>
-            <strong>사용 예시</strong>
-            <p class="ps-2 ">
-                <br>1. 불필요해진 데이터를 백업/삭제 하기보다는 날짜와 같은 기준으로 파티셔닝을 하여 테이블을 분리할 수 있다.
-                <br><br>2. 인덱스가 cache에 용량을 넘어버리면 disk I/O가 증가한다. 파티셔닝으로 사이즈를 줄여 disk I/O를 줄일 수 있다.
-                <span style="font-size: small;">(물론, 파티셔닝이 실사용과 별개로 분리되어 있으면 오히려 역효과가 날 수 있다.)</span>            
-            </p>
-            <br>
-            <strong>주의</strong>
-            <br><br>
-            <p class="ps-2">
-                1. 오히려 어느 테이블에 삽입해야 할 지 결정하는 오버헤드가 발생할 수 있다.
-                <br>2. 인덱스만으로 충분히 성능개선이 가능한 경우가 많다. 
-                <br>3. 잘못된 기준으로 파티셔닝을 하면 오히려 검색 성능이 하락한다. 
-            </p>
-            <br>
-            <strong>종류</strong>
-            <br><br>
-            <p class="ps-2">
-                <strong>Range</strong>: 범위 기반. <span style="font-size: small;">ex) 시간</span>
-                <br><strong>List</strong>: IN(..)의 개념, 포함의 개념이다. 파티셔닝간 element가 중복되어서는 안된다.
-                <br><strong>Hash</strong>: 테이블을 목적없이 균일하게 나누기위한 방법이다. 정수값 key만 사용한다.
-                <br><strong>Key</strong>: 정수 이외의 타입도 Hash로 변환한다. Hash의 대안으로 보다 균등하게 파티셔닝 된다.
-                <br><strong>수직분할</strong>: 컬럼으로 나눈다. 사용하는 컬럼만으로 재구성, 국소화 한다.
-            </p>
-        </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <h2>Partition</h2>
+    테이블을 분리하여 단일 테이블의 크기를 줄인다. 크기가 줄어들어 성능을 향상에
+    도움이 된다.
+    <br /><br />
+    <strong>사용 예시</strong>
+    <p class="ps-2">
+      <br />1. 불필요해진 데이터를 백업/삭제 하기보다는 날짜와 같은 기준으로
+      파티셔닝을 하여 테이블을 분리할 수 있다. <br /><br />2. 인덱스가 cache에
+      용량을 넘어버리면 disk I/O가 증가한다. 파티셔닝으로 사이즈를 줄여 disk
+      I/O를 줄일 수 있다.
+      <span style="font-size: small"
+        >(물론, 파티셔닝이 실사용과 별개로 분리되어 있으면 오히려 역효과가 날 수
+        있다.)</span
+      >
+    </p>
+    <br />
+    <strong>주의</strong>
+    <br /><br />
+    <p class="ps-2">
+      1. 오히려 어느 테이블에 삽입해야 할 지 결정하는 오버헤드가 발생할 수 있다.
+      <br />2. 인덱스만으로 충분히 성능개선이 가능한 경우가 많다. <br />3.
+      잘못된 기준으로 파티셔닝을 하면 오히려 검색 성능이 하락한다.
+    </p>
+    <br />
+    <strong>종류</strong>
+    <br /><br />
+    <p class="ps-2">
+      <strong>Range</strong>: 범위 기반.
+      <span style="font-size: small">ex) 시간</span> <br /><strong>List</strong
+      >: IN(..)의 개념, 포함의 개념이다. 파티셔닝간 element가 중복되어서는
+      안된다. <br /><strong>Hash</strong>: 테이블을 목적없이 균일하게 나누기위한
+      방법이다. 정수값 key만 사용한다. <br /><strong>Key</strong>: 정수 이외의
+      타입도 Hash로 변환한다. Hash의 대안으로 보다 균등하게 파티셔닝 된다.
+      <br /><strong>수직분할</strong>: 컬럼으로 나눈다. 사용하는 컬럼만으로
+      재구성, 국소화 한다.
+    </p>
   </body>
 </html>

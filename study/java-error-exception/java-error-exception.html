@@ -1,52 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/global.css">
-    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <script src="/study/study-template.js" type="text/javascript"></script>
+    <meta id="contentInfo" title="🚫Java Error, Exception" date="2023-02-10" />
     <title>Java Error, Exception</title>
   </head>
   <body>
-    <custom-nav href="/study/study.html"></custom-nav>
-    <div class="mx-4 mt-4 text-center"><h1>🚫Java Error, Exception</h1></div>
-    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
-    <p class="text-center text-secondary" style="font-size: x-small;">2023-02-10</p>
-    <div class="m-4 d-flex justify-content-center">
-        <div class="d-inline-block limit-width">
-            <h2>Error</h2>
-            에러는 예외와는 다르다. 프로세스를 실행 시킬 수 없는 상태이다.
-            Java에서는 Error를 상속받은 클래스들이다.
-            <br><br>
-            예를 들어 <strong>StackOverflowError, OutOfMemoryError</strong> 들이 있다.
+    <h2>Error</h2>
+    에러는 예외와는 다르다. 프로세스를 실행 시킬 수 없는 상태이다. Java에서는
+    Error를 상속받은 클래스들이다.
+    <br /><br />
+    예를 들어 <strong>StackOverflowError, OutOfMemoryError</strong> 들이 있다.
 
-            <br><br>
-            <h2>Exception</h2>
-            개발자의 실수, 환경에 의해 발생하는 예측 가능한 문제일 때 예외를 발생시킨다.
-            개발자가 핸들링 하도록 만들어 주는 것이다. Java에서는 Exception을 상속받은 클래스들이 해당된다.
-            <div class="p-2">
-                <strong>Checked Exception</strong> RuntimeException의 상속을 받지 않은 Exception 클래스이다.
-                Try-Catch/Throws를 강제한다. 만약 하지 않으면 컴파일이 되지 않는다. 
-                Spring에서는 기본적으로 트랜잭션 Rollback이 Checked Exception에 의해서는 실행되지 않는다. 
-                설정에 의해 Rollback 예외를 지정할 수 있다.
-                <br><br>
-                FileNotFoundException, ClassNotFoundException 등이 있다.
-                
-                <br><br>
-                <strong>Unchecked Exception</strong> RuntimeException을 상속받은 클래스이다. 예외처리를 강제하지 않는다.
-                실행 중에 발생할 수 있는 예외기 때문에 이를 모두 강제하게 되면 코드가 예외처리로 가득 할 것이다.
-                <br><br>
-                NullPointerException이 대표적이다.
-            </div>
-            <br>
-            적절한 예외와 예외처리 활용이 중요하다. 만약 모든 예외에 대해서 의미없는 try-catch로 묶어 버리면 문제가 생겼을 때 찾을 수 없게 만든다.
-            그렇다고 무조건 throws로 넘기게 된다면 코드가 복잡해지고 의미없는 예외조차 client 코드 단에서 처리해야 하는 일이 생길 것 이다.
-            <br><br>
-            때문에 올바른 예외 활용에 대해 학습이 필요하다. 다음에 올바른 예외 활용에 대해서 적어볼 예정이다.
-        </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <br /><br />
+    <h2>Exception</h2>
+    개발자의 실수, 환경에 의해 발생하는 예측 가능한 문제일 때 예외를 발생시킨다.
+    개발자가 핸들링 하도록 만들어 주는 것이다. Java에서는 Exception을 상속받은
+    클래스들이 해당된다.
+    <div class="p-2">
+      <strong>Checked Exception</strong> RuntimeException의 상속을 받지 않은
+      Exception 클래스이다. Try-Catch/Throws를 강제한다. 만약 하지 않으면
+      컴파일이 되지 않는다. Spring에서는 기본적으로 트랜잭션 Rollback이 Checked
+      Exception에 의해서는 실행되지 않는다. 설정에 의해 Rollback 예외를 지정할
+      수 있다. <br /><br />
+      FileNotFoundException, ClassNotFoundException 등이 있다.
+
+      <br /><br />
+      <strong>Unchecked Exception</strong> RuntimeException을 상속받은
+      클래스이다. 예외처리를 강제하지 않는다. 실행 중에 발생할 수 있는 예외기
+      때문에 이를 모두 강제하게 되면 코드가 예외처리로 가득 할 것이다.
+      <br /><br />
+      NullPointerException이 대표적이다.
+    </div>
+    <br />
+    적절한 예외와 예외처리 활용이 중요하다. 만약 모든 예외에 대해서 의미없는
+    try-catch로 묶어 버리면 문제가 생겼을 때 찾을 수 없게 만든다. 그렇다고
+    무조건 throws로 넘기게 된다면 코드가 복잡해지고 의미없는 예외조차 client
+    코드 단에서 처리해야 하는 일이 생길 것 이다.
+    <br /><br />
+    때문에 올바른 예외 활용에 대해 학습이 필요하다. 다음에 올바른 예외 활용에
+    대해서 적어볼 예정이다.
   </body>
 </html>

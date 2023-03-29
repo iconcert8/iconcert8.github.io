@@ -1,51 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/global.css">
-    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <script src="/study/study-template.js" type="text/javascript"></script>
+    <meta id="contentInfo" title="🗄️RDB Index" date="2023-03-01" />
     <title>RDB Index</title>
   </head>
   <body>
-    <custom-nav href="/study/study.html"></custom-nav>
-    <div class="mx-4 mt-4 text-center"><h1>🗄️RDB Index</h1></div>
-    <p class="text-center mb-0" style="font-size: small;">iconcert8's log</p>
-    <p class="text-center text-secondary" style="font-size: x-small;">2023-03-01</p>
-    <div class="m-4 d-flex justify-content-center">
-        <div class="d-inline-block limit-width">
-          <h2>Index</h2>
-          데이터를 빠르게 탐색하려면 정렬/해쉬 작업이 되어 있어야 한다.
-          흔히 탐색에서 사용하는 이진 탐색(Binary Search) 또한 데이터가 정렬 되어 있다는 가정하에 진행되는 탐색 방식이다.
-          <br><br>
-          이때 정렬/해쉬 하는 작업이 인덱싱이다. 후에 탐색을 편하게 하기위해 미리 데이터를 정리 해놓는 것이다.
-          정리된 데이터가 즉 인덱스이다.
-          <br><br>
-          <h2 style="display: inline-block;">B-Tree</h2> <a style="font-size: small;" href="/study/btree/btree.html" target="_blank">🧬B-Tree와 B+Tree</a>
-          <br>
-          대부분의 RDB의 경우 B-Tree/B+Tree 구조로 인덱스를 한다. 
-          Tree 형태로 정렬을 시켜 이진탐색과 같이 탐색한다.
-          <br><br>
-          <h2>Clustered Index</h2>
-          테이블의 데이터를 지정된 컬럼에 대해 <strong>물리적</strong>으로 재배열하는 인덱스이다.
-          <p class="ps-2 pt-2 text-secondary">
-            - 테이블당 1개만 가능하다.
-            <br>- Primary Key가 기본적으로 Clustered Index로 잡힌다. But, 다른 컬럼으로 설정할 수 있다.
-            <br>- 변하지 않는 값이어야 효율적이다. 값이 변경되면 많은 작업 오버헤드가 발생한다(물리적 위치 변경).
-            <br>- Unique 해야 한다.
-            <br>- 주 식별자로서 자주 사용되어야 효과가 있다.
-          </p>
-          <h2>Non-Clustered Index</h2>
-          <strong>논리적</strong> 재배열을 하는 인덱스이다. 주소 값만 참조하여 인덱스에 저장한다.
-          <p class="ps-2 pt-2 text-secondary">
-            - Clustered Index에 비해 성능이 낮다.
-            <br>- 테이블 당 여러개 설정 가능하다. 그러나 많은 인덱스를 설정하면 오히려 인덱싱 작업이 많아져 성능에 악영향을 끼칠 수 있다.
-            <br>- 삽입/변경/삭제 작업에 오버헤드가 적다.
-          </p>
-        </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <h2>Index</h2>
+    데이터를 빠르게 탐색하려면 정렬/해쉬 작업이 되어 있어야 한다. 흔히 탐색에서
+    사용하는 이진 탐색(Binary Search) 또한 데이터가 정렬 되어 있다는 가정하에
+    진행되는 탐색 방식이다.
+    <br /><br />
+    이때 정렬/해쉬 하는 작업이 인덱싱이다. 후에 탐색을 편하게 하기위해 미리
+    데이터를 정리 해놓는 것이다. 정리된 데이터가 즉 인덱스이다.
+    <br /><br />
+    <h2 style="display: inline-block">B-Tree</h2>
+    <a style="font-size: small" href="/study/btree/btree.html" target="_blank"
+      >🧬B-Tree와 B+Tree</a
+    >
+    <br />
+    대부분의 RDB의 경우 B-Tree/B+Tree 구조로 인덱스를 한다. Tree 형태로 정렬을
+    시켜 이진탐색과 같이 탐색한다.
+    <br /><br />
+    <h2>Clustered Index</h2>
+    테이블의 데이터를 지정된 컬럼에 대해 <strong>물리적</strong>으로 재배열하는
+    인덱스이다.
+    <p class="ps-2 pt-2 text-secondary">
+      - 테이블당 1개만 가능하다.
+      <br />- Primary Key가 기본적으로 Clustered Index로 잡힌다. But, 다른
+      컬럼으로 설정할 수 있다. <br />- 변하지 않는 값이어야 효율적이다. 값이
+      변경되면 많은 작업 오버헤드가 발생한다(물리적 위치 변경). <br />- Unique
+      해야 한다. <br />- 주 식별자로서 자주 사용되어야 효과가 있다.
+    </p>
+    <h2>Non-Clustered Index</h2>
+    <strong>논리적</strong> 재배열을 하는 인덱스이다. 주소 값만 참조하여
+    인덱스에 저장한다.
+    <p class="ps-2 pt-2 text-secondary">
+      - Clustered Index에 비해 성능이 낮다.
+      <br />- 테이블 당 여러개 설정 가능하다. 그러나 많은 인덱스를 설정하면
+      오히려 인덱싱 작업이 많아져 성능에 악영향을 끼칠 수 있다. <br />-
+      삽입/변경/삭제 작업에 오버헤드가 적다.
+    </p>
   </body>
 </html>
