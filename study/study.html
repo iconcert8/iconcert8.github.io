@@ -15,6 +15,7 @@
     />
     <link rel="stylesheet" href="/css/global.css" />
     <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <script src="./study-item.js" type="text/javascript" defer></script>
     <title>iconcert8's study</title>
   </head>
   <body>
@@ -27,314 +28,206 @@
       style="font-size: x-small"
     ></p>
     <div id="doc-list" class="row m-0">
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/solid/solid.html"
-          ><p class="m-0">🌱객체지향 프로그래밍 <strong>SOLID</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/web-process/web-process.html"
-          ><p class="m-0">🌏웹 브라우저에 <strong>URL</strong> 입력하면</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/spring-aop/spring-aop.html"
-          ><p class="m-0">🪡Spring <strong>AOP</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/rdb-partition/rdb-partition.html"
-          ><p class="m-0">🗄️RDB <strong>Partition</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/character-encoding/character-encoding.html"
-          ><p class="m-0">🔤Character <strong>Encoding</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/http-method/http-method.html"
-          ><p class="m-0">🌏HTTP <strong>Method</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/rdb-join/rdb-join.html"
-          ><p class="m-0">🗄️RDB <strong>Join</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-covariant/java-covariant.html"
-          ><p class="m-0">📜Java <strong>공변/불공변</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/rdb-index/rdb-index.html"
-          ><p class="m-0">🗄️RDB <strong>Index</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/mysql-storage-engine/mysql-storage-engine.html"
-          ><p class="m-0">🗄️MySQL <strong>Storage Engine</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/java-nio/java-nio.html"
-          ><p class="m-0">📜Java <strong>NIO</strong>란?</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/java-version/java-version.html"
-          ><p class="m-0">📜Java <strong>버전 변경사항</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-object-ordinary-pointers/java-object-ordinary-pointers.html"
-          ><p class="m-0">
-            🏗️Java <strong>Object Ordinary Pointers</strong>
-          </p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-memory-leak/java-memory-leak.html"
-          ><p class="m-0">🚫Java <strong>Memory Leak</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/docker/docker.html"
-          ><p class="m-0">🚢<strong>Docker</strong>란?</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/virtualization/virtualization.html"
-          ><p class="m-0">🛤️<strong>Virtualization(가상화)</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-executor-service/java-executor-service.html"
-          ><p class="m-0">📜Java <strong>ExecutorService</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-fork-join-framework/java-fork-join-framework.html"
-          ><p class="m-0">📜Java <strong>Fork/Join</strong> Framework</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-thread-runnable/java-thread-runnable.html"
-          ><p class="m-0">📜Java <strong>Thread, Runnable</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-error-exception/java-error-exception.html"
-          ><p class="m-0">🚫Java <strong>Error, Exception</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/jvm-z-gc/jvm-z-gc.html"
-          ><p class="m-0">🧹JVM <strong>Z GC</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/jvm-g1-gc/jvm-g1-gc.html"
-          ><p class="m-0">🧹JVM <strong>G1 GC</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/jvm-gc-algorithm/jvm-gc-algorithm.html"
-          ><p class="m-0">🧹JVM <strong>GC 알고리즘</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/jvm-gc-basic/jvm-gc-basic.html"
-          ><p class="m-0">🧹JVM <strong>Garbage Collection</strong> 개요</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/jvm-option/jvm-option.html"
-          ><p class="m-0">⚙️<strong>JVM Option</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/jvm/jvm.html"
-          ><p class="m-0">
-            🏗️<strong>JVM</strong> 그리고 <strong>구조</strong>
-          </p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/cors/cors.html"
-          ><p class="m-0">🔒<strong>CORS</strong>란?</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/jwt/jwt.html"
-          ><p class="m-0">🔒<strong>JWT</strong>란?</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/oauth/oauth.html"
-          ><p class="m-0">🔒<strong>OAuth</strong>란?</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/tls-ssl/tls-ssl.html"
-          ><p class="m-0">🔒<strong>TLS / SSL</strong>란?</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/tcp-congestion-control/tcp-congestion-control.html"
-          ><p class="m-0">🌏TCP <strong>Congestion Control</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/tcp-flow-control/tcp-flow-control.html"
-          ><p class="m-0">🌏TCP <strong>Flow Control</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/tcp-3-way-handshake/tcp-3-way-handshake.html"
-          ><p class="m-0">🌏TCP <strong>3-Way Handshake</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/osi-7-layer/osi-7-layer.html"
-          ><p class="m-0">🌏<strong>OSI 7 Layer</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/virtual-memory/virtual-memory.html"
-          ><p class="m-0">🖥️<strong>Virtual Memory</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/paging-and-segmentation/paging-and-segmentation.html"
-          ><p class="m-0">🖥️<strong>Paging, Segmentaion</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/mutex-vs-semaphore/mutex-vs-semaphore.html"
-          ><p class="m-0">
-            🌱<strong>Mutex</strong> vs <strong>Semaphore</strong>
-          </p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/cache/cache.html"
-          ><p class="m-0">🌱<strong>Cache</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/deadlock/deadlock.html"
-          ><p class="m-0">🖥️<strong>Deadlock</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/cpu-scheduling/cpu-scheduling.html"
-          ><p class="m-0">🖥️CPU <strong>Scheduling</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/os-interrupt/os-interrupt.html"
-          ><p class="m-0">🖥️운영체제 <strong>Interrupt</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/os-context-switching/os-context-switching.html"
-          ><p class="m-0">🖥️운영체제 <strong>Context Switching</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/transaction-locking/transaction-locking.html"
-          ><p class="m-0">🗄️트랜잭션 <strong>병행제어 기법</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/transaction-isolation-level/transaction-isolation-level.html"
-          ><p class="m-0">🗄️트랜잭션 <strong>고립 수준</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/transaction-acid/transaction-acid.html"
-          ><p class="m-0">🗄️트랜잭션 <strong>ACID</strong></p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/db-normalization/db-normaliztion.html"
-          ><p class="m-0">🗄️RDB <strong>정규화</strong>와 종류</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/btree/btree.html"
-          ><p class="m-0">
-            🧬<strong>B-Tree</strong>와 <strong>B+Tree</strong>
-          </p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/http/http.html"
-          ><p class="m-0">🌏<strong>HTTP</strong>의 변천사</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a
-          class="link px-4 py-2"
-          href="/study/java-arraylist/java-arraylist.html"
-          ><p class="m-0">🧬<strong>Java ArrayList</strong>의 원리</p></a
-        >
-      </div>
-      <div class="col-lg-4 col-sm-6 col-12 p-0">
-        <a class="link px-4 py-2" href="/study/hash/hash.html"
-          ><p class="m-0">
-            🧬<strong>Hash</strong>란? <strong>Hash충돌</strong>이란?
-          </p></a
-        >
-      </div>
+      <study-item
+        href="/study/solid/solid.html"
+        text="🌱객체지향 프로그래밍 <strong>SOLID</strong>"
+      ></study-item>
+      <study-item
+        href="/study/web-process/web-process.html"
+        text="🌏웹 브라우저에 <strong>URL</strong> 입력하면"
+      ></study-item>
+      <study-item
+        href="/study/spring-aop/spring-aop.html"
+        text="🪡Spring <strong>AOP</strong>"
+      ></study-item>
+      <study-item
+        href="/study/rdb-partition/rdb-partition.html"
+        text="🗄️RDB <strong>Partition</strong>"
+      ></study-item>
+      <study-item
+        href="/study/character-encoding/character-encoding.html"
+        text="🔤Character <strong>Encoding</strong>"
+      ></study-item>
+      <study-item
+        href="/study/http-method/http-method.html"
+        text="🌏HTTP <strong>Method</strong>"
+      ></study-item>
+      <study-item
+        href="/study/rdb-join/rdb-join.html"
+        text="🗄️RDB <strong>Join</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-covariant/java-covariant.html"
+        text="📜Java <strong>공변/불공변</strong>"
+      ></study-item>
+      <study-item
+        href="/study/rdb-index/rdb-index.html"
+        text="🗄️RDB <strong>Index</strong>"
+      ></study-item>
+      <study-item
+        href="/study/mysql-storage-engine/mysql-storage-engine.html"
+        text="🗄️MySQL <strong>Storage Engine</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-nio/java-nio.html"
+        text="📜Java <strong>NIO</strong>란?"
+      ></study-item>
+      <study-item
+        href="/study/java-version/java-version.html"
+        text="📜Java <strong>버전 변경사항</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-object-ordinary-pointers/java-object-ordinary-pointers.html"
+        text="🏗️Java <strong>Object Ordinary Pointers</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-memory-leak/java-memory-leak.html"
+        text="🚫Java <strong>Memory Leak</strong>"
+      ></study-item>
+      <study-item
+        href="/study/docker/docker.html"
+        text="🚢<strong>Docker</strong>란?"
+      ></study-item>
+      <study-item
+        href="/study/virtualization/virtualization.html"
+        text="🛤️<strong>Virtualization(가상화)</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-executor-service/java-executor-service.html"
+        text="📜Java <strong>ExecutorService</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-fork-join-framework/java-fork-join-framework.html"
+        text="📜Java <strong>Fork/Join</strong> Framework"
+      ></study-item>
+      <study-item
+        href="/study/java-thread-runnable/java-thread-runnable.html"
+        text="📜Java <strong>Thread, Runnable</strong>"
+      ></study-item>
+      <study-item
+        href="/study/java-error-exception/java-error-exception.html"
+        text="🚫Java <strong>Error, Exception</strong>"
+      ></study-item>
+      <study-item
+        href="/study/jvm-z-gc/jvm-z-gc.html"
+        text="🧹JVM <strong>Z GC</strong>"
+      ></study-item>
+      <study-item
+        href="/study/jvm-g1-gc/jvm-g1-gc.html"
+        text="🧹JVM <strong>G1 GC</strong>"
+      ></study-item>
+      <study-item
+        href="/study/jvm-gc-algorithm/jvm-gc-algorithm.html"
+        text="🧹JVM <strong>GC 알고리즘</strong>"
+      ></study-item>
+      <study-item
+        href="/study/jvm-gc-basic/jvm-gc-basic.html"
+        text="🧹JVM <strong>Garbage Collection</strong> 개요"
+      ></study-item>
+      <study-item
+        href="/study/jvm-option/jvm-option.html"
+        text="⚙️<strong>JVM Option</strong>"
+      ></study-item>
+      <study-item
+        href="/study/jvm/jvm.html"
+        text="🏗️<strong>JVM</strong> 그리고 <strong>구조</strong>"
+      ></study-item>
+      <study-item
+        href="/study/cors/cors.html"
+        text="🔒<strong>CORS</strong>란?"
+      ></study-item>
+      <study-item
+        href="/study/jwt/jwt.html"
+        text="🔒<strong>JWT</strong>란?"
+      ></study-item>
+      <study-item
+        href="/study/oauth/oauth.html"
+        text="🔒<strong>OAuth</strong>란?"
+      ></study-item>
+      <study-item
+        href="/study/tls-ssl/tls-ssl.html"
+        text="🔒<strong>TLS / SSL</strong>란?"
+      ></study-item>
+      <study-item
+        href="/study/tcp-congestion-control/tcp-congestion-control.html"
+        text="🌏TCP <strong>Congestion Control</strong>"
+      ></study-item>
+      <study-item
+        href="/study/tcp-flow-control/tcp-flow-control.html"
+        text="🌏TCP <strong>Flow Control</strong>"
+      ></study-item>
+      <study-item
+        href="/study/tcp-3-way-handshake/tcp-3-way-handshake.html"
+        text="🌏TCP <strong>3-Way Handshake</strong>"
+      ></study-item>
+      <study-item
+        href="/study/osi-7-layer/osi-7-layer.html"
+        text="🌏<strong>OSI 7 Layer</strong>"
+      ></study-item>
+      <study-item
+        href="/study/virtual-memory/virtual-memory.html"
+        text="🖥️<strong>Virtual Memory</strong>"
+      ></study-item>
+      <study-item
+        href="/study/paging-and-segmentation/paging-and-segmentation.html"
+        text="🖥️<strong>Paging, Segmentaion</strong>"
+      ></study-item>
+      <study-item
+        href="/study/mutex-vs-semaphore/mutex-vs-semaphore.html"
+        text="🌱<strong>Mutex</strong> vs <strong>Semaphore</strong>"
+      ></study-item>
+      <study-item
+        href="/study/cache/cache.html"
+        text="🌱<strong>Cache</strong>"
+      ></study-item>
+      <study-item
+        href="/study/deadlock/deadlock.html"
+        text="🖥️<strong>Deadlock</strong>"
+      ></study-item>
+      <study-item
+        href="/study/cpu-scheduling/cpu-scheduling.html"
+        text="🖥️CPU <strong>Scheduling</strong>"
+      ></study-item>
+      <study-item
+        href="/study/os-interrupt/os-interrupt.html"
+        text="🖥️운영체제 <strong>Interrupt</strong>"
+      ></study-item>
+      <study-item
+        href="/study/os-context-switching/os-context-switching.html"
+        text="🖥️운영체제 <strong>Context Switching</strong>"
+      ></study-item>
+      <study-item
+        href="/study/transaction-locking/transaction-locking.html"
+        text="🗄️트랜잭션 <strong>병행제어 기법</strong>"
+      ></study-item>
+      <study-item
+        href="/study/transaction-isolation-level/transaction-isolation-level.html"
+        text="🗄️트랜잭션 <strong>고립 수준</strong>"
+      ></study-item>
+      <study-item
+        href="/study/transaction-acid/transaction-acid.html"
+        text="🗄️트랜잭션 <strong>ACID</strong>"
+      ></study-item>
+      <study-item
+        href="/study/db-normalization/db-normaliztion.html"
+        text="🗄️RDB <strong>정규화</strong>와 종류"
+      ></study-item>
+      <study-item
+        href="/study/btree/btree.html"
+        text="🧬<strong>B-Tree</strong>와 <strong>B+Tree</strong>"
+      ></study-item>
+      <study-item
+        href="/study/http/http.html"
+        text="🌏<strong>HTTP</strong>의 변천사"
+      ></study-item>
+      <study-item
+        href="/study/java-arraylist/java-arraylist.html"
+        text="🧬<strong>Java ArrayList</strong>의 원리"
+      ></study-item>
+      <study-item
+        href="/study/hash/hash.html"
+        text="🧬<strong>Hash</strong>란? <strong>Hash충돌</strong>이란?"
+      ></study-item>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
