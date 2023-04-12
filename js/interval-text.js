@@ -23,7 +23,7 @@ let registerMouseClickWriteIntevalText = (element, prefix, sufix, text, href)=>{
     if(intervalId != 0){
       return;
     }
-    intervalId = writeIntervalText(element, prefix, sufix, text, href);
+    writeIntervalText(element, prefix, sufix, text, href);
   }
 
   let writeIntervalText = (element, prefix, sufix, text, href)=>{
