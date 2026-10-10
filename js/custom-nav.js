@@ -44,7 +44,7 @@ class CustomNav extends HTMLElement {
 customElements.define('custom-nav', CustomNav);
 
 const page = window.location.pathname;
-if(page.startsWith("/study/")){
+if(page.startsWith("/work/")){
   const nav = document.getElementsByTagName('custom-nav')[0];
   const navTitle = document.getElementById('custom-title');
   const originTitle = nav.nextElementSibling.children[0];

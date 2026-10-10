@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/css/global.css" />
+    <script src="/js/custom-nav.js" type="text/javascript" defer></script>
+    <title>iconcert8's work</title>
+    <style>
+      .section-head{
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+      .section-head h2{
+        margin: 0;
+      }
+      .section-desc{
+        font-size: 0.8em;
+        color: gray;
+        margin-bottom: 16px;
+      }
+      .story{
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        border: 1px solid #EEEEEE;
+        border-radius: 14px;
+        color: black;
+        text-decoration: none;
+        transition: background-color .2s, transform .2s;
+      }
+      .story:hover{
+        color: black;
+        background-color: #F6F6F6;
+        transform: translateY(-2px);
+      }
+      .story-emoji{
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .story-body{
+        flex: 1;
+        min-width: 0;
+      }
+      .story-arrow{
+        color: #BBBBBB;
+        flex-shrink: 0;
+      }
+      .done{
+        background-color: #F7F7F8;
+        border-radius: 16px;
+        padding: 20px;
+      }
+      .company{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #E4E4E4;
+      }
+      .cat-title{
+        font-size: 0.85em;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .done ul{
+        font-size: 0.8em;
+        padding-left: 18px;
+        margin-bottom: 16px;
+        color: #333333;
+      }
+    </style>
+  </head>
+  <body>
+    <custom-nav href="/index.html"></custom-nav>
+    <div class="text-center mx-4 mt-4"><h1>Work</h1></div>
+    <p class="text-center" style="font-size: small">iconcert8's log</p>
+    <div class="m-4 d-flex justify-content-center">
+      <div class="d-inline-block limit-width w-100">
+        <div class="section-head"><h2>📋 해온 일</h2></div>
+        <div class="section-desc">한 일과 결과 위주로 모았어요.</div>
+        <div class="done">
+          <div class="company"><strong>그립컴퍼니</strong><span class="fs-7 text-secondary">2023.04 ~ 현재 · 라이브 커머스 SaaS 서버·인프라</span></div>
+          <div class="row">
+              <div class="col-md-6">
+                <div class="cat-title">안정성·장애 대응</div>
+                <ul>
+                  <li>고부하 재시작 연쇄의 원인을 liveness 구조로 규명, 10개 서비스 프로브 구조 개편 (재현 실험 실패율 <strong>97% → 0%</strong>)</li>
+                  <li>API 순간 지연의 원인을 DB 풀스캔 겹침으로 규명, read/write 라우팅·캐시 복구 (DB 멈춤 <strong>109 → 3회</strong>/7일)</li>
+                  <li>Parallel GC → G1GC, 힙 비율 할당 8개 서버 적용 (STW <strong>500ms~1s → 10ms 이하</strong>)</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="cat-title">트래픽·성능</div>
+                <ul>
+                  <li>ALB 로그 분석으로 진입 트래픽 분리, 리스너 규칙 순서 조정 (같은 동접 대비 LCU <strong>약 30%↓</strong>, 평시 규칙 검사 <strong>약 70%↓</strong>)</li>
+                  <li>Redis 병목을 로컬 캐시로 전환 (Redis 호출 <strong>30%↓</strong>)</li>
+                  <li>서버 기동 웜업 적용 (증설 직후 순간 지연 <strong>약 40%↓</strong>)</li>
+                  <li>슬로우쿼리 수집 파이프라인 구축, 쿼리 구조 개선 (최대 <strong>87초 → 0.11초</strong>, 개발 서버)</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="cat-title">인프라·비용</div>
+                <ul>
+                  <li>EKS 1.34 → 1.36 <strong>무중단</strong> 업그레이드 (Terraform 단계별 apply)</li>
+                  <li>Aurora MySQL 5.7 → 8.0 블루/그린 전환, 마이너 업그레이드 (리허설·런북 작성)</li>
+                  <li>RabbitMQ 3.11 → 4.1 블루/그린 전환, 앱 재연결 로직으로 MQ 재기동 시 전 서버 재시작 제거</li>
+                  <li>30일 실측 기반 전 서비스 리사이징 (월 비용 <strong>−43%</strong>)</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="cat-title">관측성</div>
+                <ul>
+                  <li>공용 로깅 라이브러리 개발. JSON 구조화 로그, 민감값 마스킹, trace_id 주입</li>
+                  <li>흩어진 로그 수집 경로를 Alloy → Loki로 단일화, trace_id 하나로 로그·트레이스 연결 조회</li>
+                  <li>앱 알림과 Grafana 알림을 통합하는 알림 서버 개발 (Kotlin, Spring Boot)</li>
+                  <li>Loki 로그 실종·OOM 원인을 bloom filter로 규명, 해소</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="cat-title">AI</div>
+                <ul>
+                  <li>실시간 AI 자막·다국어 번역 서버 개발</li>
+                  <li>라이브 AI 챗봇(RAG) 서버 개발. 검색 누락 원인을 측정으로 규명해 답변 품질 개선</li>
+                  <li>자막 끊김 튜닝 (문장 끝에서 끝나는 자막 <strong>62% → 74%</strong>)</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="cat-title">API·미디어</div>
+                <ul>
+                  <li>Open API 설계·개발, 사용량 수집·분석</li>
+                  <li>고객사 V1 → V2 이관. API 매핑 문서 작성, 데이터·영상 이관</li>
+                  <li>스트림 서버 분배를 사용률 기준으로 바꿔 특정 서버 디스크 포화 해소</li>
+                </ul>
+              </div>
+          </div>
+
+          <div class="company mt-2"><strong>비카누스</strong><span class="fs-7 text-secondary">2019.09 ~ 2022.02 · 제품개발연구소 연구원</span></div>
+          <ul>
+            <li><a href="/work/roboscan.html">RoboScan</a> 책임 개발. 로봇·스캐너·공장 설비 5개 모듈 다중 프로세스 시스템 설계·개발, <strong>실제 공장 생산라인 적용</strong></li>
+            <li>역기구학 3D 로봇 시뮬레이터 개발, 실물 로봇 대신 시뮬레이터로 티칭</li>
+            <li>EdgeV 개발. 센서 데이터 취득·적재·시각화, 연구기관 센서 모니터링에 활용</li>
+            <li>3D 메탈 프린팅 CAM 개발. NC-Code 인터프리터, 가공 경로 3D 시뮬레이션</li>
+          </ul>
+        </div>
+
+        <div class="section-head mt-5"><h2>🧩 문제를 풀었던 일</h2><span class="text-secondary fs-7">10</span></div>
+        <div class="section-desc">무슨 문제가 있었고, 원인을 어떻게 찾았고, 무엇을 했는지. 눌러서 자세히 볼 수 있어요.</div>
+        <a class="story" href="/work/restart-storm.html">
+          <div class="story-emoji">🔁</div>
+          <div class="story-body">
+            <strong>트래픽이 몰리자 서버가 계속 재시작됐다</strong>
+            <div class="fs-7 text-secondary">liveness 체크가 살아 있는 서버를 죽이고 있었습니다. 재현 실험에서 요청 실패율 97% → 0%</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/db-p95.html">
+          <div class="story-emoji">🗄️</div>
+          <div class="story-body">
+            <strong>API가 순간 1초씩 멈췄다</strong>
+            <div class="fs-7 text-secondary">겹치는 풀스캔 쿼리와 죽어 있던 read/write 라우팅. DB 멈춤 109 → 3회(7일)</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/ffmpeg-vn.html">
+          <div class="story-emoji">🎞️</div>
+          <div class="story-body">
+            <strong>옵션 하나 때문에 서버가 먹통이 됐다</strong>
+            <div class="fs-7 text-secondary">지표도 같이 죽은 서버. 앱 로그로 멈춘 지점을 찾았습니다. 디스크 읽기 7.88GB → 61KB</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/rag-chatbot.html">
+          <div class="story-emoji">🤖</div>
+          <div class="story-body">
+            <strong>챗봇이 상품 가격을 모른다고 했다</strong>
+            <div class="fs-7 text-secondary">리랭커를 붙이기 전에 먼저 측정했습니다. 원인은 근사 검색 누락과 숫자를 모르는 임베딩</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/loki-bloom.html">
+          <div class="story-emoji">🔍</div>
+          <div class="story-body">
+            <strong>로그가 있는데 안 보였다</strong>
+            <div class="fs-7 text-secondary">제가 켠 Loki bloom filter가 원인이었습니다. 실수를 인정하고 끄기까지</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/resizing.html">
+          <div class="story-emoji">💸</div>
+          <div class="story-body">
+            <strong>쓰지도 않는 자원에 돈을 내고 있었다</strong>
+            <div class="fs-7 text-secondary">30일 실측으로 다시 잰 서버 사이즈. 월 비용 −43%</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/infra-upgrade.html">
+          <div class="story-emoji">🧰</div>
+          <div class="story-body">
+            <strong>멈추면 안 되는 DB·k8s 업그레이드</strong>
+            <div class="fs-7 text-secondary">Aurora, RabbitMQ, EKS. 위험한 건 당일 밖으로 빼고 리허설로 시간을 쟀습니다</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/gc.html">
+          <div class="story-emoji">🧹</div>
+          <div class="story-body">
+            <strong>GC 때문에 API가 1초씩 멈췄다</strong>
+            <div class="fs-7 text-secondary">Parallel GC → G1GC, 힙은 컨테이너 비율로. STW 500ms~1초 → 10ms 이하</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/traffic.html">
+          <div class="story-emoji">🚦</div>
+          <div class="story-body">
+            <strong>방송 시작 순간 몰리는 트래픽 받기</strong>
+            <div class="fs-7 text-secondary">ALB 로그로 어디를 뗄지 정했습니다. ALB 분리, 규칙 순서, 캐시 웜업의 함정</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+        <a class="story" href="/work/roboscan.html">
+          <div class="story-emoji">🦾</div>
+          <div class="story-body">
+            <strong>혼자 만든 로봇 품질검증 시스템</strong>
+            <div class="fs-7 text-secondary">비카누스. 모듈 5개 통신, 역기구학 시뮬레이터, 원인 모를 버그는 구조를 바꿔서</div>
+          </div>
+          <i class="bi bi-chevron-right story-arrow"></i>
+        </a>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
