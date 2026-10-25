@@ -101,7 +101,6 @@
                 <div class="cat-title">안정성·장애 대응</div>
                 <ul>
                   <li>고부하 재시작 연쇄의 원인을 liveness 구조로 규명, 10개 서비스 프로브 구조 개편 (재현 실험 실패율 <strong>97% → 0%</strong>)</li>
-                  <li>API 순간 지연의 원인을 DB 풀스캔 겹침으로 규명, read/write 라우팅·캐시 복구 (DB 멈춤 <strong>109 → 3회</strong>/7일)</li>
                   <li>Parallel GC → G1GC, 힙 비율 할당 8개 서버 적용 (STW <strong>500ms~1s → 10ms 이하</strong>)</li>
                 </ul>
               </div>
@@ -111,7 +110,6 @@
                   <li>ALB 로그 분석으로 진입 트래픽 분리, 리스너 규칙 순서 조정 (같은 동접 대비 LCU <strong>약 30%↓</strong>, 평시 규칙 검사 <strong>약 70%↓</strong>)</li>
                   <li>Redis 병목을 로컬 캐시로 전환 (Redis 호출 <strong>30%↓</strong>)</li>
                   <li>서버 기동 웜업 적용 (증설 직후 순간 지연 <strong>약 40%↓</strong>)</li>
-                  <li>슬로우쿼리 수집 파이프라인 구축, 쿼리 구조 개선 (최대 <strong>87초 → 0.11초</strong>, 개발 서버)</li>
                 </ul>
               </div>
               <div class="col-md-6">
@@ -129,7 +127,6 @@
                   <li>공용 로깅 라이브러리 개발. JSON 구조화 로그, 민감값 마스킹, trace_id 주입</li>
                   <li>흩어진 로그 수집 경로를 Alloy → Loki로 단일화, trace_id 하나로 로그·트레이스 연결 조회</li>
                   <li>앱 알림과 Grafana 알림을 통합하는 알림 서버 개발 (Kotlin, Spring Boot)</li>
-                  <li>Loki 로그 실종·OOM 원인을 bloom filter로 규명, 해소</li>
                 </ul>
               </div>
               <div class="col-md-6">
@@ -141,10 +138,8 @@
                 </ul>
               </div>
               <div class="col-md-6">
-                <div class="cat-title">API·미디어</div>
+                <div class="cat-title">미디어</div>
                 <ul>
-                  <li>Open API 설계·개발, 사용량 수집·분석</li>
-                  <li>고객사 V1 → V2 이관. API 매핑 문서 작성, 데이터·영상 이관</li>
                   <li>스트림 서버 분배를 사용률 기준으로 바꿔 특정 서버 디스크 포화 해소</li>
                 </ul>
               </div>
@@ -159,21 +154,13 @@
           </ul>
         </div>
 
-        <div class="section-head mt-5"><h2>🧩 문제를 풀었던 일</h2><span class="text-secondary fs-7">10</span></div>
+        <div class="section-head mt-5"><h2>🧩 문제를 풀었던 일</h2><span class="text-secondary fs-7">8</span></div>
         <div class="section-desc">무슨 문제가 있었고, 원인을 어떻게 찾았고, 무엇을 했는지. 눌러서 자세히 볼 수 있어요.</div>
         <a class="story" href="/work/restart-storm.html">
           <div class="story-emoji">🔁</div>
           <div class="story-body">
             <strong>트래픽이 몰리자 서버가 계속 재시작됐다</strong>
             <div class="fs-7 text-secondary">liveness 체크가 살아 있는 서버를 죽이고 있었습니다. 재현 실험에서 요청 실패율 97% → 0%</div>
-          </div>
-          <i class="bi bi-chevron-right story-arrow"></i>
-        </a>
-        <a class="story" href="/work/db-p95.html">
-          <div class="story-emoji">🗄️</div>
-          <div class="story-body">
-            <strong>API가 순간 1초씩 멈췄다</strong>
-            <div class="fs-7 text-secondary">겹치는 풀스캔 쿼리와 죽어 있던 read/write 라우팅. DB 멈춤 109 → 3회(7일)</div>
           </div>
           <i class="bi bi-chevron-right story-arrow"></i>
         </a>
@@ -190,14 +177,6 @@
           <div class="story-body">
             <strong>챗봇이 상품 가격을 모른다고 했다</strong>
             <div class="fs-7 text-secondary">리랭커를 붙이기 전에 먼저 측정했습니다. 원인은 근사 검색 누락과 숫자를 모르는 임베딩</div>
-          </div>
-          <i class="bi bi-chevron-right story-arrow"></i>
-        </a>
-        <a class="story" href="/work/loki-bloom.html">
-          <div class="story-emoji">🔍</div>
-          <div class="story-body">
-            <strong>로그가 있는데 안 보였다</strong>
-            <div class="fs-7 text-secondary">제가 켠 Loki bloom filter가 원인이었습니다. 실수를 인정하고 끄기까지</div>
           </div>
           <i class="bi bi-chevron-right story-arrow"></i>
         </a>
